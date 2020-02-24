@@ -1,0 +1,1 @@
+{"version":3,"sources":["js/index.js"],"names":["console","log"],"mappings":";AAAAA,QAAQC,IAAI","file":"js.93e3d7cf.js","sourceRoot":"..\\src","sourcesContent":["console.log('123')\r\n\r\n// import { getData } from './getData';\r\n// import { styles } from \"styles/style\";\r\n\r\n// getData();"]}
