@@ -124,13 +124,25 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.getData = getData;
+exports.data = void 0;
+
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance"); }
+
+function _iterableToArray(iter) { if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === "[object Arguments]") return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }
+
+var data = [];
+exports.data = data;
 
 function getData() {
   DZ.init({
     appId: "384884",
     channelUrl: "https://szildaniel.github.io/music-API/"
   });
-  DZ.api("/playlist/6855206804", function (response) {
+  DZ.api("/playlist/6855206804", function getDataFromPlaylist(response) {
     var fetchedData = response.tracks.data;
     var neededData = fetchedData.map(function (song, i) {
       var id = song.id;
@@ -139,25 +151,141 @@ function getData() {
       var link = song.link;
       var img = song.album.cover_small;
       var pos = i + 1;
-      var necc = {
+      var necessary = {
         id: id,
         artist: artist,
         title: title,
         link: link,
         img: img
       };
-      return necc;
+      return necessary;
     });
-    console.log(neededData);
+    data.push.apply(data, _toConsumableArray(neededData));
   });
 }
-},{}],"js/index.js":[function(require,module,exports) {
+},{}],"js/render/renderDividers.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = renderDividers;
+
+function renderDividers() {
+  var main = document.querySelector("main");
+  var sectionDividerUp = "<svg id=\"curveUpColor\" xmlns=\"http://www.w3.org/2000/svg\" version=\"1.1\" width=\"100%\" height=\"100\" viewBox=\"0 0 100 100\" preserveAspectRatio=\"none\">\n                                    <path d=\"M0 100 C 20 0 50 0 100 100 Z\" />\n                              </svg>";
+  var sectionDividerDown = "<svg id=\"curveDownColor\" xmlns=\"http://www.w3.org/2000/svg\" version=\"1.1\" width=\"100%\" height=\"100\" viewBox=\"0 0 100 100\" preserveAspectRatio=\"none\">\n                                     <path d=\"M0 0 C 50 100 80 100 100 0 Z\" />\n                                </svg>";
+
+  for (var i = 0; i <= 5; i++) {
+    main.innerHTML += "".concat(sectionDividerUp).concat(sectionDividerDown);
+  }
+
+  function setDataIndex() {
+    var allDividersDown = document.querySelectorAll('#curveDownColor');
+    var allDividersUp = document.querySelectorAll('#curveUpColor');
+    allDividersUp.forEach(function (divider, i) {
+      divider.setAttribute('data-dividerUp-index', i);
+    });
+    allDividersDown.forEach(function (divider, i) {
+      divider.setAttribute('data-dividerDown-index', i);
+    });
+  }
+
+  setDataIndex();
+}
+},{}],"js/render/renderSections.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = renderSections;
+
+function renderSections() {
+  var parentEl = document.querySelector('main');
+
+  function renderSectionWithDividers() {
+    for (var i = 0; i < 6; i++) {
+      var newSection = document.createElement('section');
+      var currentDividerDown = document.querySelector("[data-dividerDown-index=\"".concat(i, "\"]"));
+      newSection.classList.add('with__dividers');
+      parentEl.insertBefore(newSection, currentDividerDown);
+    }
+  }
+
+  function renderSectionWithoutDividers() {
+    var allDividerUp = document.querySelectorAll("[data-dividerUp-index]");
+    allDividerUp.forEach(function (el, i) {
+      if (i !== 0) {
+        var newSection = document.createElement('section');
+        parentEl.insertBefore(newSection, el);
+      }
+    });
+  }
+
+  function addYearAttributeToSections() {
+    var allSections = document.querySelectorAll('section');
+    allSections.forEach(function (section, i) {
+      section.setAttribute('data-year', "".concat(1990 + i));
+      section.setAttribute('id', "".concat(1990 + i));
+    });
+  }
+
+  renderSectionWithDividers();
+  renderSectionWithoutDividers();
+  addYearAttributeToSections();
+}
+},{}],"js/render/renderHeaders.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = renderHeaders;
+
+function renderHeaders() {
+  var allSections = document.querySelectorAll('[data-year]');
+  allSections.forEach(function (section) {
+    var sectionYear = section.dataset.year;
+    var newHeader = document.createElement('h3');
+    newHeader.classList.add("section__header");
+    newHeader.textContent = "Top 10 tracks of year ".concat(sectionYear, " by Billboard");
+    section.appendChild(newHeader);
+  });
+}
+},{}],"js/render/render.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = renderRepeatableHtml;
+
+var _renderDividers = _interopRequireDefault(require("./renderDividers"));
+
+var _renderSections = _interopRequireDefault(require("./renderSections"));
+
+var _renderHeaders = _interopRequireDefault(require("./renderHeaders"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function renderRepeatableHtml() {
+  (0, _renderDividers.default)();
+  (0, _renderSections.default)();
+  (0, _renderHeaders.default)();
+}
+},{"./renderDividers":"js/render/renderDividers.js","./renderSections":"js/render/renderSections.js","./renderHeaders":"js/render/renderHeaders.js"}],"js/index.js":[function(require,module,exports) {
 "use strict";
 
 var _getData = require("./getData");
 
+var _render = _interopRequireDefault(require("./render/render"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+(0, _render.default)();
 (0, _getData.getData)();
-},{"./getData":"js/getData.js"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"./getData":"js/getData.js","./render/render":"js/render/render.js"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -185,7 +313,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "49273" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "49292" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
