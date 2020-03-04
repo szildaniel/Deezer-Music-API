@@ -15,6 +15,7 @@
   "dependencies": {
     "assemble": "^0.3.83",
     "grunt": "^0.4.5",
+    "smoothscroll-polyfill": "^0.4.4",
     "styles": "^0.2.1"
   }
 }
