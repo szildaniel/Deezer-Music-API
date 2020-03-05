@@ -69,7 +69,10 @@
       margin-bottom: 0;
     }
   }
-
+  .section__header{
+    text-align: center;
+    font-size: 1.5rem;
+  }
   .song__container,
   .song__container__result {
     width: auto;
@@ -125,7 +128,7 @@
     -webkit-overflow-scrolling: touch;
   }
   header {
-    background-image: url("../img/bg-mobile2.png");
+    background-image: url("../img/bg-mobile.png");
     height: 100vh;
   }
   .header__button {
@@ -149,7 +152,7 @@
   }
   .nav {
     position: fixed;
-    right: -700px;
+    right: -350px;
     transition: 0.8s;
     width: 70vw;
     background: $menuLi;
@@ -183,7 +186,9 @@
       justify-content: space-between;
     }
   }
-
+  // .nav__search--p{
+  //   padding-top: .2rem;
+  // }
   .nav__closeBtn {
     display: none;
     transform: translateX(-250px);

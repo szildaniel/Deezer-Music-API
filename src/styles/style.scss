@@ -9,9 +9,16 @@ html{
 }
 body {
   font-family: $mainFont;
-  background: url("../img/papyrus.png");
+  background: url("../img/bg-desktop.png");
 }
-
+main{
+  transition: margin-left 0.4s cubic-bezier(0.1, 0.58, 0.33, 0.83);
+  margin-left: 0;
+  &.navExpanded{
+  transition: margin-left 0.7s cubic-bezier(0.1, 0.58, 0.33, 0.83);
+  margin-left: 300px;
+  }
+}
 header {
   background-image: url("../img/bg-header.jpg");
   background-position: center;
@@ -47,7 +54,7 @@ header {
   position: absolute;
   bottom: 5%;
   left: 50%;
-  transform: translate(-5%, -50%);
+  transform: translate(-50%, -5%);
   font-size: 2rem;
   a {
     color: white;
@@ -76,9 +83,11 @@ header {
   color: white;
   text-shadow: 0 0 5px black;
   width: 100%;
+  overflow-x: hidden;
   h3{
     margin: 0;
-    font-size: 1.5rem;
+    font-family: $navHeaderFont;
+    font-size: 1.8rem;
     letter-spacing: 0.1px;
   }
 }
@@ -91,7 +100,7 @@ header {
   font-size:1.2rem;
   text-shadow: 0 0 2px black;
     label{
-      padding-top: .5rem;
+      padding: .5rem 0;
     }
      input{
       display: inline-block;
@@ -101,16 +110,15 @@ header {
       border-radius: 8px;
       border: none;
       box-shadow: 0 0 2px black;
-      margin: 1rem 0;
         &:hover{
           box-shadow: 0 0 5px black;
           border: none;
         }
       }
   }
-.nav__p--search{
-  margin: 0;
-  margin-bottom: .3rem;
+
+.nav__search--p{
+  padding-top: .2rem;
 }
 
 .nav a {
@@ -174,7 +182,6 @@ article {
   &.with__dividers {
     background: $sectionBlue;
     margin-bottom: 0;
-    position: relative;
     .songdata {
       background: #ffaf3d;
     }

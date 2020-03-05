@@ -1,5 +1,5 @@
-@import url("https://fonts.googleapis.com/css?family=Concert+One|Sigmar+One&display=swap");
-@import url("https://fonts.googleapis.com/css?family=Concert+One|Sigmar+One&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Concert+One|Indie+Flower|Sigmar+One&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Concert+One|Indie+Flower|Sigmar+One&display=swap");
 * {
   margin: 0;
   padding: 0;
@@ -10,8 +10,17 @@ html {
 }
 
 body {
-  font-family: "Concert One";
-  background: url("/papyrus.de92fae5.png");
+  font-family: "Concert One", cursive;
+  background: url("/bg-desktop.720daff5.png");
+}
+
+main {
+  transition: margin-left 0.4s cubic-bezier(0.1, 0.58, 0.33, 0.83);
+  margin-left: 0;
+}
+main.navExpanded {
+  transition: margin-left 0.7s cubic-bezier(0.1, 0.58, 0.33, 0.83);
+  margin-left: 300px;
 }
 
 header {
@@ -49,7 +58,7 @@ header {
   position: absolute;
   bottom: 5%;
   left: 50%;
-  transform: translate(-5%, -50%);
+  transform: translate(-50%, -5%);
   font-size: 2rem;
 }
 .header__button a {
@@ -81,10 +90,12 @@ header {
   color: white;
   text-shadow: 0 0 5px black;
   width: 100%;
+  overflow-x: hidden;
 }
 .nav__title h3 {
   margin: 0;
-  font-size: 1.5rem;
+  font-family: "Indie Flower", cursive;
+  font-size: 1.8rem;
   letter-spacing: 0.1px;
 }
 
@@ -100,7 +111,7 @@ header {
   text-shadow: 0 0 2px black;
 }
 .nav__search label {
-  padding-top: 0.5rem;
+  padding: 0.5rem 0;
 }
 .nav__search input {
   display: inline-block;
@@ -110,16 +121,14 @@ header {
   border-radius: 8px;
   border: none;
   box-shadow: 0 0 2px black;
-  margin: 1rem 0;
 }
 .nav__search input:hover {
   box-shadow: 0 0 5px black;
   border: none;
 }
 
-.nav__p--search {
-  margin: 0;
-  margin-bottom: 0.3rem;
+.nav__search--p {
+  padding-top: 0.2rem;
 }
 
 .nav a {
@@ -189,7 +198,6 @@ section.with__dividers,
 article.with__dividers {
   background: #3498db;
   margin-bottom: 0;
-  position: relative;
 }
 section.with__dividers .songdata,
 article.with__dividers .songdata {
@@ -215,7 +223,7 @@ svg {
 }
 
 .section__header {
-  font-family: "Sigmar One";
+  font-family: "Sigmar One", cursive;
   font-size: 2rem;
   text-shadow: 2px 2px 3px gray;
   letter-spacing: 0.35px;
@@ -298,6 +306,11 @@ svg {
     margin-bottom: 0;
   }
 
+  .section__header {
+    text-align: center;
+    font-size: 1.5rem;
+  }
+
   .song__container,
 .song__container__result {
     width: auto;
@@ -359,7 +372,7 @@ textarea {
   }
 
   header {
-    background-image: url("/bg-mobile2.0ed97164.png");
+    background-image: url("/bg-mobile.55454341.png");
     height: 100vh;
   }
 
@@ -386,7 +399,7 @@ textarea {
 
   .nav {
     position: fixed;
-    right: -700px;
+    right: -350px;
     transition: 0.8s;
     width: 70vw;
     background: #4F5A80;

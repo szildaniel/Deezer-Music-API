@@ -2,17 +2,19 @@ import '../styles/style.scss';
 
 import renderRepeatableHtml from "./render/render";
 import { getData, data } from "./getData";
-import { headerButtonHoverAnimate } from "./helpers/hoverAnimations";
-import { navListeners } from "./helpers/nav";
+import { toggleNav } from "./helpers/nav";
 import smoothscroll from 'smoothscroll-polyfill';
 import { hamburgerAnimation } from "./animations/hamburgerAnimation";
+import { enjoyBtnHoverAnimation } from "./animations/enjoyBtnAnimations";
+import { setResponsiveNavHeight } from './helpers/setResponsiveNavHeight'
 
 renderRepeatableHtml();
 getData();
-headerButtonHoverAnimate();
-navListeners();
+enjoyBtnHoverAnimation();
+toggleNav();
 smoothscroll.polyfill();
 hamburgerAnimation();
+setResponsiveNavHeight();
 
 
 

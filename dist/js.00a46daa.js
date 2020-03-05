@@ -189,7 +189,7 @@ var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
 module.hot.accept(reloadCSS);
-},{"./..\\img\\papyrus.png":[["papyrus.de92fae5.png","img/papyrus.png"],"img/papyrus.png"],"./..\\img\\bg-header.jpg":[["bg-header.28ba781d.jpg","img/bg-header.jpg"],"img/bg-header.jpg"],"./..\\img\\bg-mobile2.png":[["bg-mobile2.0ed97164.png","img/bg-mobile2.png"],"img/bg-mobile2.png"],"_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"js/render/renderDividers.js":[function(require,module,exports) {
+},{"./..\\img\\bg-desktop.png":[["bg-desktop.720daff5.png","img/bg-desktop.png"],"img/bg-desktop.png"],"./..\\img\\bg-header.jpg":[["bg-header.28ba781d.jpg","img/bg-header.jpg"],"img/bg-header.jpg"],"./..\\img\\bg-mobile.png":[["bg-mobile.55454341.png","img/bg-mobile.png"],"img/bg-mobile.png"],"_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"js/render/renderDividers.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -346,54 +346,36 @@ function getData() {
     data.push.apply(data, _toConsumableArray(neededData));
   });
 }
-},{}],"js/helpers/hoverAnimations.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.headerButtonHoverAnimate = headerButtonHoverAnimate;
-
-function headerButtonHoverAnimate() {
-  var headerBtn = document.querySelector(".header__button");
-  var headerPlayIcon = document.querySelector(".landing_icon");
-  var exclaMark = document.querySelector(".header__excla");
-  headerBtn.addEventListener("mouseover", function () {
-    headerPlayIcon.style.color = "#4489b6";
-    headerPlayIcon.style.textShadow = "0 0 1px black";
-    headerPlayIcon.style.transform = "rotate(360deg) translate(6px)";
-    exclaMark.style.color = "#4489b6";
-  });
-  headerBtn.addEventListener("mouseleave", function () {
-    headerPlayIcon.style.color = "white";
-    headerPlayIcon.style.textShadow = "0 0 4px black";
-    headerPlayIcon.style.transform = "rotate(-360deg) translate(0)";
-    exclaMark.style.color = "white";
-  });
-}
 },{}],"js/helpers/nav.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.navListeners = navListeners;
+exports.toggleNav = toggleNav;
 var sidePanel = document.getElementById("mySidePanel");
 var openBtn = document.querySelector(".nav__openBtn");
+var main = document.querySelector("main");
 
 function openNav() {
   sidePanel.style.left = "0";
   openBtn.style.opacity = "0";
   openBtn.style.transition = "0s";
+  toggleMarginToMain();
 }
 
 function closeNav() {
   sidePanel.style.left = "-305px";
   openBtn.style.opacity = "1";
   openBtn.style.transition = "1.5s";
+  toggleMarginToMain();
 }
 
-function navListeners() {
+function toggleMarginToMain() {
+  main.classList.toggle('navExpanded');
+}
+
+function toggleNav() {
   var openBtn = document.querySelector(".nav__openBtn");
   var closeBtn = document.querySelector(".nav__closeBtn");
   openBtn.addEventListener("click", openNav);
@@ -873,7 +855,81 @@ function hamburgerAnimation() {
   hamburger.addEventListener("click", expand);
   hideMenu();
 }
-},{}],"js/index.js":[function(require,module,exports) {
+},{}],"js/animations/enjoyBtnAnimations.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.enjoyBtnHoverAnimation = enjoyBtnHoverAnimation;
+
+function enjoyBtnHoverAnimation() {
+  var headerBtn = document.querySelector(".header__button");
+  var headerPlayIcon = document.querySelector(".landing_icon");
+  var exclaMark = document.querySelector(".header__excla");
+  headerBtn.addEventListener("mouseover", function () {
+    headerPlayIcon.style.color = "#4489b6";
+    headerPlayIcon.style.textShadow = "0 0 1px black";
+    headerPlayIcon.style.transform = "rotate(360deg) translate(6px)";
+    exclaMark.style.color = "#4489b6";
+  });
+  headerBtn.addEventListener("mouseleave", function () {
+    headerPlayIcon.style.color = "white";
+    headerPlayIcon.style.textShadow = "0 0 4px black";
+    headerPlayIcon.style.transform = "rotate(-360deg) translate(0)";
+    exclaMark.style.color = "white";
+  });
+}
+},{}],"js/helpers/debounce.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = debounce;
+
+function debounce(func, wait, immediate) {
+  var timeout;
+  return function executedFunction() {
+    var context = this;
+    var args = arguments;
+
+    var later = function later() {
+      timeout = null;
+      if (!immediate) func.apply(context, args);
+    };
+
+    var callNow = immediate && !timeout;
+    clearTimeout(timeout);
+    timeout = setTimeout(later, wait);
+    if (callNow) func.apply(context, args);
+  };
+}
+
+;
+},{}],"js/helpers/setResponsiveNavHeight.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.setResponsiveNavHeight = setResponsiveNavHeight;
+
+var _debounce = _interopRequireDefault(require("./debounce"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function setRootVariableVh() {
+  var vh = window.innerHeight * 0.01;
+  document.documentElement.style.setProperty('--vh', "".concat(vh, "px"));
+}
+
+var debouncedResizeFn = (0, _debounce.default)(setRootVariableVh, 250);
+
+function setResponsiveNavHeight() {
+  window.addEventListener('resize', debouncedResizeFn);
+}
+},{"./debounce":"js/helpers/debounce.js"}],"js/index.js":[function(require,module,exports) {
 "use strict";
 
 require("../styles/style.scss");
@@ -882,25 +938,28 @@ var _render = _interopRequireDefault(require("./render/render"));
 
 var _getData = require("./getData");
 
-var _hoverAnimations = require("./helpers/hoverAnimations");
-
 var _nav = require("./helpers/nav");
 
 var _smoothscrollPolyfill = _interopRequireDefault(require("smoothscroll-polyfill"));
 
 var _hamburgerAnimation = require("./animations/hamburgerAnimation");
 
+var _enjoyBtnAnimations = require("./animations/enjoyBtnAnimations");
+
+var _setResponsiveNavHeight = require("./helpers/setResponsiveNavHeight");
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 (0, _render.default)();
 (0, _getData.getData)();
-(0, _hoverAnimations.headerButtonHoverAnimate)();
-(0, _nav.navListeners)();
+(0, _enjoyBtnAnimations.enjoyBtnHoverAnimation)();
+(0, _nav.toggleNav)();
 
 _smoothscrollPolyfill.default.polyfill();
 
 (0, _hamburgerAnimation.hamburgerAnimation)();
-},{"../styles/style.scss":"styles/style.scss","./render/render":"js/render/render.js","./getData":"js/getData.js","./helpers/hoverAnimations":"js/helpers/hoverAnimations.js","./helpers/nav":"js/helpers/nav.js","smoothscroll-polyfill":"../node_modules/smoothscroll-polyfill/dist/smoothscroll.js","./animations/hamburgerAnimation":"js/animations/hamburgerAnimation.js"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+(0, _setResponsiveNavHeight.setResponsiveNavHeight)();
+},{"../styles/style.scss":"styles/style.scss","./render/render":"js/render/render.js","./getData":"js/getData.js","./helpers/nav":"js/helpers/nav.js","smoothscroll-polyfill":"../node_modules/smoothscroll-polyfill/dist/smoothscroll.js","./animations/hamburgerAnimation":"js/animations/hamburgerAnimation.js","./animations/enjoyBtnAnimations":"js/animations/enjoyBtnAnimations.js","./helpers/setResponsiveNavHeight":"js/helpers/setResponsiveNavHeight.js"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;

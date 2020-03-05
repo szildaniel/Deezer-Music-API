@@ -1,4 +1,4 @@
-export function headerButtonHoverAnimate() {
+export function enjoyBtnHoverAnimation() {
   const headerBtn = document.querySelector(".header__button");
   const headerPlayIcon = document.querySelector(".landing_icon");
   const exclaMark = document.querySelector(".header__excla");
