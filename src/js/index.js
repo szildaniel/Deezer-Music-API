@@ -1,3 +1,5 @@
+import '../styles/style.scss';
+
 import renderRepeatableHtml from "./render/render";
 import { getData, data } from "./getData";
 import { headerButtonHoverAnimate } from "./helpers/hoverAnimations";

@@ -1,6 +1,569 @@
-body {
-  background: gray;
+@import url("https://fonts.googleapis.com/css?family=Concert+One|Sigmar+One&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Concert+One|Sigmar+One&display=swap");
+* {
+  margin: 0;
+  padding: 0;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Concert One";
+  background: url("/papyrus.de92fae5.png");
+}
+
+header {
+  background-image: url("/bg-header.28ba781d.jpg");
+  background-position: center;
+  background-size: cover;
+  height: 100vh;
+  color: white;
+  padding: 4rem;
+  text-align: center;
+}
+
+.header__text {
+  position: absolute;
+  top: 5rem;
+  right: 2rem;
+  padding: 1rem 2rem;
+  text-shadow: 2px 2px 3px black;
+}
+.header__text h1 {
+  margin-top: 0;
+}
+.header__text h2 {
+  margin: 12px 0;
+  font-size: 1.8rem;
+}
+.header__text .header__icon {
+  transition: 0.5s;
+}
+.header__text .header__icon:hover, .header__text .header__icon:active, .header__text .header__icon:focus {
+  color: #3498db;
+}
+
+.header__button {
+  position: absolute;
+  bottom: 5%;
+  left: 50%;
+  transform: translate(-5%, -50%);
+  font-size: 2rem;
+}
+.header__button a {
+  color: white;
+  text-decoration: none;
+  text-shadow: 2px 2px 3px black;
+}
+.header__button .landing_icon {
+  color: white;
+  text-shadow: 2px 2px 3px black;
+  position: relative;
+  font-size: 18px;
+  margin-right: 4px;
+  position: relative;
+  transition: all 0.7s;
+}
+
+.header__excla {
+  transition: 0.3s;
+}
+
+.nav__title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 0.9rem 0;
+  background: #253773;
+  color: white;
+  text-shadow: 0 0 5px black;
+  width: 100%;
+}
+.nav__title h3 {
+  margin: 0;
+  font-size: 1.5rem;
+  letter-spacing: 0.1px;
+}
+
+.nav__search {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  justify-content: space-between;
+  background: #253773;
+  color: white;
+  font-size: 1.2rem;
+  text-shadow: 0 0 2px black;
+}
+.nav__search label {
+  padding-top: 0.5rem;
+}
+.nav__search input {
+  display: inline-block;
+  height: 25px;
+  font-size: 0.9rem;
+  transition: 0.1s;
+  border-radius: 8px;
+  border: none;
+  box-shadow: 0 0 2px black;
+  margin: 1rem 0;
+}
+.nav__search input:hover {
+  box-shadow: 0 0 5px black;
+  border: none;
+}
+
+.nav__p--search {
+  margin: 0;
+  margin-bottom: 0.3rem;
+}
+
+.nav a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: white;
+  display: flex;
+  justify-content: center;
+  transition: 0.3s;
+}
+.nav a:hover {
+  color: #f1f1f1;
+}
+
+.nav .nav__closeBtn {
+  font-size: 36px;
+  position: absolute;
+  right: 15px;
+  top: 5px;
+  cursor: pointer;
+  background: #253773;
+}
+
+.nav__openBtn {
+  font-size: 30px;
+  width: 40px;
+  cursor: pointer;
+  background-color: black;
+  color: white;
+  padding: 10px 10px;
+  border: none;
+  position: fixed;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 20;
+  opacity: 1;
+  transition: 0s;
+}
+.nav__openBtn:hover {
+  background-color: #444;
+}
+
+.red {
+  color: #dd0916;
+}
+
+.blue {
+  color: #017ed0;
+}
+
+.yellow {
+  color: #f7ed00;
+}
+
+section,
+article {
+  height: 300px;
+  padding: 2rem;
+  margin: 0 0 2rem 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+section.with__dividers,
+article.with__dividers {
+  background: #3498db;
+  margin-bottom: 0;
+  position: relative;
+}
+section.with__dividers .songdata,
+article.with__dividers .songdata {
+  background: #ffaf3d;
+}
+section.with__dividers .section__header,
+article.with__dividers .section__header {
+  text-shadow: 2px 2px 3px black;
+  color: white;
+  margin-top: 0;
+}
+
+svg {
+  display: block;
+}
+
+#curveUpColor path,
+#curveDownColor path,
+#curveUpColorResult path {
+  fill: #3498db;
+  stroke: #3498db;
+  box-sizing: border-box;
+}
+
+.section__header {
+  font-family: "Sigmar One";
+  font-size: 2rem;
+  text-shadow: 2px 2px 3px gray;
+  letter-spacing: 0.35px;
+  font-weight: 300;
+  margin-bottom: 3rem;
+}
+
+@media (min-height: 300px) {
+  .nav {
+    font-family: "Concert One", cursive;
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    height: calc(var(--vh, 1vh) * 100);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+  }
+}
+@media (max-width: 767px) {
+  * {
+    margin: 0;
+  }
+
+  body {
+    display: block;
+    margin: 0;
+  }
+
+  header {
+    grid-column: none;
+    padding: 1rem;
+    height: 85vh;
+  }
+
+  .enjoy {
+    position: absolute;
+    bottom: 20%;
+    left: 50%;
+    transform: translate(-50%, -20%);
+    font-size: 2rem;
+  }
+
+  .landing__text {
+    position: static;
+    letter-spacing: 0.5px;
+    padding: 0;
+    margin-top: 2rem;
+  }
+
+  .title {
+    margin: 1rem 0.8rem;
+  }
+
+  iframe,
+.player__container {
+    width: 350px;
+    overflow-x: hidden;
+    padding-left: 0;
+    margin-left: 0;
+    display: flex;
+    justify-content: center;
+  }
+
+  .songsOrderedList {
+    padding-left: 0;
+    margin-left: 0;
+  }
+
+  main {
+    width: 100vw;
+  }
+
+  section {
+    padding: 0;
+    align-items: none;
+  }
+  section:last-child {
+    margin-bottom: 0;
+  }
+
+  .song__container,
+.song__container__result {
+    width: auto;
+    margin: 1.5rem 0.8rem;
+  }
+
+  .songdata,
+.songdata__result {
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    padding: 1rem 0;
+    width: 60vw;
+  }
+
+  nav ul li a {
+    font-size: 1.3rem;
+    padding: 0.4rem 1rem;
+  }
+  nav ul li a.current {
+    padding: 0.4rem 1rem;
+  }
+
+  .song__title {
+    padding: 1.3rem 0.5rem;
+    font-size: 1.3rem;
+  }
+
+  .title-result {
+    font-size: 1.3rem;
+    margin: 0.7rem 0;
+  }
+
+  footer {
+    font-size: 1.21rem;
+  }
+  footer h3 {
+    padding: 1.2rem 0.5rem;
+  }
+  footer h4 {
+    padding-bottom: 1.2rem;
+  }
+
+  .search-div input {
+    font-size: 1.1rem;
+    width: 80%;
+  }
+
+  input[type=text],
+input[type=number],
+textarea {
+    font-size: 1.1rem;
+  }
+}
+@media (max-width: 1168px) {
+  body {
+    overflow: scroll;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  header {
+    background-image: url("/bg-mobile2.0ed97164.png");
+    height: 100vh;
+  }
+
+  .header__button {
+    transform: translate(-50%, -5%);
+  }
+
+  .header__text {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+    color: #403b3c;
+    text-shadow: none;
+  }
+  .header__text h1 {
+    display: none;
+  }
+  .header__text h2 {
+    font-size: 1.2rem;
+    text-align: justify;
+    margin: 0;
+  }
+
+  .nav {
+    position: fixed;
+    right: -700px;
+    transition: 0.8s;
+    width: 70vw;
+    background: #4F5A80;
+  }
+  .nav.expanded {
+    justify-content: flex-start;
+    position: fixed;
+    right: 0;
+    z-index: 1001;
+    border-right: none;
+    transition: 0.5s;
+  }
+  .nav .nav-title {
+    padding-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+  }
+  .nav .nav-title .search-div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .nav .nav-title h3 {
+    display: none;
+  }
+  .nav ul {
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .nav__closeBtn {
+    display: none;
+    transform: translateX(-250px);
+  }
+
+  .nav__hamburger {
+    position: fixed;
+    top: 0.3rem;
+    right: 0.6rem;
+    z-index: 30;
+    -webkit-transition: 0.8s;
+    transition: 0.8s;
+    width: 30px;
+    height: 32px;
+    background: transparent;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+  }
+  .nav__hamburger:focus {
+    outline: none;
+  }
+
+  .result__wrapper {
+    display: none;
+    margin-top: 0;
+    padding: 2rem 0.6rem;
+  }
+
+  .bar {
+    width: 100%;
+    height: 3px;
+    content: "";
+    background: #333;
+    display: inline-block;
+    padding: 0;
+    margin: 0;
+    position: relative;
+    border-radius: 6px;
+    transition: all 0.8s;
+  }
+  .bar.expand {
+    transition: all 0.5s;
+    background: #e45580;
+    width: 75%;
+  }
+
+  .bar1 {
+    top: 5px;
+  }
+  .bar1.expand {
+    transform: rotate(45deg) translate(4px, 3px);
+  }
+
+  .bar2 {
+    width: 80%;
+    right: 20%;
+  }
+  .bar2.expand {
+    display: none;
+  }
+
+  .bar3 {
+    bottom: 5px;
+  }
+  .bar3.expand {
+    transform: rotate(-45deg);
+  }
+
+  .song__data {
+    margin: 16px 0;
+  }
+
+  footer {
+    font-size: 1rem;
+    text-align: center;
+    margin: 0;
+  }
+  footer h3 {
+    text-align: center;
+  }
+  footer h4 {
+    text-align: center;
+  }
+
+  .header-rules {
+    width: 95vw;
+    padding: 2rem 0.5rem;
+  }
+  .header-rules h1 {
+    padding: 1rem 0;
+  }
+
+  .rules-ol {
+    padding-inline-start: 20px;
+    text-align: center;
+  }
+  .rules-ol li {
+    padding: 0.7rem 0;
+  }
+
+  .controls {
+    left: 5%;
+  }
+
+  .nav__openBtn {
+    display: none;
+  }
+}
+@media (min-width: 1168px) {
+  header {
+    background-image: url("/bg-header.28ba781d.jpg");
+  }
+
+  .nav__hamburger {
+    display: none;
+  }
+
+  .nav {
+    height: 100vh;
+    width: 300px;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: -305px;
+    background-color: #4F5A80;
+    overflow-x: hidden;
+    transition: all 0.6s cubic-bezier(0.1, 0.58, 0.33, 0.83);
+  }
+}
+@media (max-height: 620px) {
+  nav ul li a {
+    font-size: 0.9rem;
+    padding: 0.35rem 1rem;
+  }
+
+  .player__container,
+iframe {
+    width: 300px;
+  }
+
+  .search-div input {
+    margin: 0.5rem 0;
+  }
+}
 
 /*# sourceMappingURL=/js.00a46daa.css.map */
