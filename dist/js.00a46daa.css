@@ -1,5 +1,5 @@
-@import url("https://fonts.googleapis.com/css?family=Concert+One|Indie+Flower|Sigmar+One&display=swap");
-@import url("https://fonts.googleapis.com/css?family=Concert+One|Indie+Flower|Sigmar+One&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Concert+One|Indie+Flower|Sigmar+One|Ubuntu+Condensed&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Concert+One|Indie+Flower|Sigmar+One|Ubuntu+Condensed&display=swap");
 * {
   margin: 0;
   padding: 0;
@@ -185,6 +185,15 @@ header {
   color: #f7ed00;
 }
 
+.section__header {
+  font-family: "Sigmar One", cursive;
+  font-size: 2rem;
+  text-shadow: 2px 2px 3px gray;
+  letter-spacing: 0.35px;
+  font-weight: 300;
+  margin-bottom: 3rem;
+}
+
 section,
 article {
   height: 300px;
@@ -222,13 +231,57 @@ svg {
   box-sizing: border-box;
 }
 
-.section__header {
-  font-family: "Sigmar One", cursive;
-  font-size: 2rem;
-  text-shadow: 2px 2px 3px gray;
-  letter-spacing: 0.35px;
-  font-weight: 300;
-  margin-bottom: 3rem;
+.svg__clouds {
+  fill: white;
+  stroke: white;
+  box-sizing: border-box;
+}
+
+.section--blue {
+  background: #3498db;
+}
+
+footer {
+  font-family: "Ubuntu Condensed";
+  font-weight: normal;
+  background: white;
+  text-align: end;
+  text-shadow: 0 0 3px white;
+  padding-right: 2rem;
+}
+footer .footer__citat {
+  font-family: "Indie Flower";
+  font-weight: bolder;
+  font-style: italic;
+}
+footer h3, footer h4 {
+  text-align: end;
+  padding: 1rem 0;
+  font-size: 1.3rem;
+}
+footer h3 {
+  font-size: 1.6rem;
+}
+footer h4 {
+  font-weight: normal;
+}
+footer .fa-heart {
+  color: #3498db;
+  padding: 0 2px;
+  transition: 0.4s;
+}
+footer .fa-heart:hover, footer .fa-heart:focus, footer .fa-heart:active {
+  color: #dd0916;
+}
+footer .fa-github {
+  font-size: 25px;
+  transition: 0.4s;
+  margin: 0 5px;
+}
+footer .github__link {
+  color: black;
+  text-decoration: none;
+  font-size: 20px;
 }
 
 @media (min-height: 300px) {
@@ -364,6 +417,10 @@ input[type=number],
 textarea {
     font-size: 1.1rem;
   }
+
+  .nav__title h3 {
+    font-size: 1.5rem;
+  }
 }
 @media (max-width: 1168px) {
   body {
@@ -392,7 +449,7 @@ textarea {
     display: none;
   }
   .header__text h2 {
-    font-size: 1.2rem;
+    font-size: 1.15rem;
     text-align: justify;
     margin: 0;
   }
@@ -510,12 +567,16 @@ textarea {
     font-size: 1rem;
     text-align: center;
     margin: 0;
+    padding-right: 0;
   }
   footer h3 {
     text-align: center;
+    font-size: 1.15rem;
   }
   footer h4 {
     text-align: center;
+    font-size: 1rem;
+    padding-bottom: 1.4rem;
   }
 
   .header-rules {
@@ -576,6 +637,31 @@ iframe {
 
   .search-div input {
     margin: 0.5rem 0;
+  }
+}
+@media (min-height: 700px) and (min-width: 700px) {
+  .nav {
+    right: -600px;
+    width: 350px;
+  }
+
+  .nav__title {
+    font-size: 1.8rem;
+  }
+
+  .header__text {
+    width: 80vw;
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  .header__text h2 {
+    font-size: 1.8rem;
+    text-align: center;
+  }
+
+  .section__header {
+    text-align: center;
   }
 }
 
