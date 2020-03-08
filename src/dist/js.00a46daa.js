@@ -287,33 +287,20 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = renderList;
 
-var renderLiElements = function renderLiElements(parentEl, i) {
-  //   const newDiv = document.createElement('div');
-  //   newDiv.classList.add("song__container");
-  //   const newDiv2 = document.createElement('div');
-  //   newDiv2.classList.add("songadata");
-  var newImg = document.createElement('img');
-  newImg.setAttribute("src", '');
-  newImg.classList.add('cover');
-  var newSongHeader = document.createElement('h3');
-  newSongHeader.classList.add('song__title');
-  var newDiv = document.createElement('div');
-  newDiv.classList.add('deezer');
-  var newLink = document.createElement('a');
-  newLink.setAttribute('target', '_blank');
-  newLink.classList.add('btnPlay');
-  var newIcon = document.createElement('i');
-  newIcon.classList.add('fa', "fa-play", "play".concat(i));
-  var deezerSvg = "<svg id=\"svg2\" class=\"logo62\"\n  xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 46.9 24.5\" width=\"100\" height=\"52\">\n  <style> .st0 {fill: #b1e3fa} .st1 {fill: #f7bacf} .st2 {fill: #e7ee9f} .st3 {fill: #feea3a}\n   .st4 {fill: #fe9d7f} .st5 {fill: #4ec2f6} .st6 {fill: #ccdb38} .st7 {fill: #fe3f80} .st8 {fill: #fe3d02}\n  </style>\n  <path id=\"path59\" class=\"st0\" d=\"M38.3 13.9v-1h8.6v2h-8.6v-1zm0-3.2v-1h8.6v2h-8.6v-1zm0-3.2v-1h8.6v2h-8.6v-1zm0-3.3v-1h8.6v2.1h-8.6V4.2zm0-3.1V0h8.6v2.2h-8.6V1.1z\" />\n  <path id=\"path57\" class=\"st1\" d=\"M19.1 13.9v-1h8.6v2h-8.6v-1zm0-3.2v-1h8.6v2h-8.6v-1zm0-3.2v-1h8.6v2h-8.6v-1zm0-3.3v-1h8.6v2.1h-8.6V4.2z\" />\n  <path id=\"path55\" class=\"st2\" d=\"M28.7 13.9v-1h8.6v2h-8.6v-1zm0-3.2v-1h8.6v2h-8.6v-1z\" />\n  <path id=\"path53\" class=\"st3\" d=\"M9.6 23.5v-1H18v2H9.6v-1zm0-3.3v-1H18v2H9.6v-1zm0-3.2v-1H18v2H9.6v-1z\" />\n  <path id=\"path51\" class=\"st4\" d=\"M0 13.9v-1h8.4v2H0v-1zm0-3.2v-1h8.4v2H0v-1z\" />\n  <path id=\"path49\" class=\"st5\" d=\"M38.4 23.5v-1h8.4v2h-8.4v-1zm0-3.3v-1h8.4v2h-8.4v-1zm0-3.2v-1h8.4v2h-8.4v-1z\" />\n  <path id=\"path47\" class=\"st6\" d=\"M28.8 23.5v-1h8.4v2h-8.4v-1zm0-3.3v-1h8.4v2h-8.4v-1zm0-3.2v-1h8.4v2h-8.4v-1z\" />\n  <path id=\"path45\" class=\"st7\" d=\"M19.2 23.5v-1h8.4v2h-8.4v-1zm0-3.3v-1h8.4v2h-8.4v-1zm0-3.2v-1h8.4v2h-8.4v-1z\" />\n  <path id=\"path43\" class=\"st8\" d=\"M0 23.5v-1h8.4v2H0v-1zm0-3.3v-1h8.4v2H0v-1zM0 17v-1h8.4v2H0v-1z\" />\n</svg>";
-  console.log(newIcon);
+var renderElementsInsideLi = function renderElementsInsideLi() {
+  var allLi = document.querySelectorAll('ol > li');
+  allLi.forEach(function (li, i) {
+    var liElements = "\n                <div class=\"song__container\">\n                    <img class=\"cover".concat(i, "\" src=\"\" alt=\"album-cover\">\n                    <h3 class=\"song__title song__title").concat(i, "\">Title ").concat(i, "</h3>\n                    <div class=\"deezer deezer").concat(i, "\">\n                        <a href=\"\" target=\"_blank\" class=\"btnPlay btn").concat(i, "\"><i class=\"fa fa-play play").concat(i, "\"></i>\n                            <svg id=\"svg2\" class=\"logo62\"\n                                xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 46.9 24.5\" width=\"100\" height=\"52\">\n                                <style> .st0 {fill: #b1e3fa} .st1 {fill: #f7bacf} .st2 {fill: #e7ee9f} .st3 {fill: #feea3a}\n                                 .st4 {fill: #fe9d7f} .st5 {fill: #4ec2f6} .st6 {fill: #ccdb38} .st7 {fill: #fe3f80} .st8 {fill: #fe3d02}\n                                </style>\n                                <path id=\"path59\" class=\"st0\" d=\"M38.3 13.9v-1h8.6v2h-8.6v-1zm0-3.2v-1h8.6v2h-8.6v-1zm0-3.2v-1h8.6v2h-8.6v-1zm0-3.3v-1h8.6v2.1h-8.6V4.2zm0-3.1V0h8.6v2.2h-8.6V1.1z\" />\n                                <path id=\"path57\" class=\"st1\" d=\"M19.1 13.9v-1h8.6v2h-8.6v-1zm0-3.2v-1h8.6v2h-8.6v-1zm0-3.2v-1h8.6v2h-8.6v-1zm0-3.3v-1h8.6v2.1h-8.6V4.2z\" />\n                                <path id=\"path55\" class=\"st2\" d=\"M28.7 13.9v-1h8.6v2h-8.6v-1zm0-3.2v-1h8.6v2h-8.6v-1z\" />\n                                <path id=\"path53\" class=\"st3\" d=\"M9.6 23.5v-1H18v2H9.6v-1zm0-3.3v-1H18v2H9.6v-1zm0-3.2v-1H18v2H9.6v-1z\" />\n                                <path id=\"path51\" class=\"st4\" d=\"M0 13.9v-1h8.4v2H0v-1zm0-3.2v-1h8.4v2H0v-1z\" />\n                                <path id=\"path49\" class=\"st5\" d=\"M38.4 23.5v-1h8.4v2h-8.4v-1zm0-3.3v-1h8.4v2h-8.4v-1zm0-3.2v-1h8.4v2h-8.4v-1z\" />\n                                <path id=\"path47\" class=\"st6\" d=\"M28.8 23.5v-1h8.4v2h-8.4v-1zm0-3.3v-1h8.4v2h-8.4v-1zm0-3.2v-1h8.4v2h-8.4v-1z\" />\n                                <path id=\"path45\" class=\"st7\" d=\"M19.2 23.5v-1h8.4v2h-8.4v-1zm0-3.3v-1h8.4v2h-8.4v-1zm0-3.2v-1h8.4v2h-8.4v-1z\" />\n                                <path id=\"path43\" class=\"st8\" d=\"M0 23.5v-1h8.4v2H0v-1zm0-3.3v-1h8.4v2H0v-1zM0 17v-1h8.4v2H0v-1z\" />\n                            </svg>\n                        </a>\n                    </div>\n                </div>");
+    li.innerHTML = liElements;
+  });
 };
 
-function renderLi(parentEl, renderLiElements) {
-  for (var i = 0; i <= 10; i++) {
+var renderLi = function renderLi(parentEl) {
+  for (var i = 0; i < 10; i++) {
     var newLi = document.createElement('li');
     parentEl.appendChild(newLi);
   }
-}
+};
 
 function renderList() {
   var allSections = document.querySelectorAll('section');
@@ -322,17 +309,10 @@ function renderList() {
     var year = 1990 + i;
     newOl.classList.add('songsOrderedList', "s".concat(year));
     section.appendChild(newOl);
-    renderLi(newOl, renderLiElements);
-    renderLiElements();
+    renderLi(newOl);
+    renderElementsInsideLi();
   });
-} // container
-//songdata div
-// img
-// h3 title
-// deezer div
-//a
-//icon
-//svg
+}
 },{}],"js/render/render.js":[function(require,module,exports) {
 "use strict";
 
@@ -1022,10 +1002,7 @@ function setCurrentClassToNavLinks() {
   var scrolledFromTop = window.scrollY;
   allNavLinks.forEach(function (link, i) {
     var currentYear = 1990 + i;
-    var currentSection = document.querySelector("[data-year='".concat(currentYear, "']")); // const currentSection = document.querySelector(`[data-year='1990']`);
-    // const sectionOnScreenTop = currentSection.offsetTop - window.innerHeight;
-    // console.log(sectionOnScreenTop, scrolledFromTop); 
-    // console.log(currentSection.offsetTop, currentSection.offsetHeight, window.innerHeight, Math.trunc(window.scrollY));
+    var currentSection = document.querySelector("[data-year='".concat(currentYear, "']"));
 
     if (currentSection.offsetTop <= scrolledFromTop + 10 && currentSection.offsetTop + currentSection.offsetHeight > scrolledFromTop) {
       link.classList.add("current");
@@ -1097,7 +1074,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "49390" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "62076" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

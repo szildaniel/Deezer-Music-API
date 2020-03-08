@@ -140,8 +140,8 @@
     top: 50%;
     right: 0;
     transform: translateY(-50%);
-    color: #403b3c;
-    text-shadow: none;
+    color: white;
+    text-shadow: 2px 2px 3px black;
     h1{
       display:none;
     }
@@ -327,26 +327,28 @@
   }
 }
 // only iPads, tablets
-@media (min-height: 700px) and (min-width: 700px){
-    .nav{
-      right: -600px;
-      width: 350px;
-    }
-    .nav__title{
+@media only screen 
+and (min-device-width : 768px) 
+and (max-device-width : 1024px)  { 
+  .nav{
+    right: -600px;
+    width: 350px;
+  }
+  .nav__title{
+    font-size: 1.8rem;
+  }
+  .header__text{
+    width: 80vw;
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    h2{
       font-size: 1.8rem;
-    }
-    .header__text{
-      width: 80vw;
-      top: 60%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      h2{
-        font-size: 1.8rem;
-        text-align: center;
-      }
-    }
-    .section__header{
       text-align: center;
     }
-
+  }
+  .section__header{
+    text-align: center;
+  }
 }
+    

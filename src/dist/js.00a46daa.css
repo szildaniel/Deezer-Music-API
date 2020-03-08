@@ -33,6 +33,10 @@ header {
   text-align: center;
 }
 
+ol {
+  list-style: none;
+}
+
 ul {
   list-style: none;
   margin: 0;
@@ -208,7 +212,6 @@ ul {
 
 section,
 article {
-  height: 300px;
   padding: 2rem;
   margin: 0 0 2rem 0;
   display: flex;
@@ -220,8 +223,8 @@ article.with__dividers {
   background: #3498db;
   margin-bottom: 0;
 }
-section.with__dividers .songdata,
-article.with__dividers .songdata {
+section.with__dividers .song__container,
+article.with__dividers .song__container {
   background: #ffaf3d;
 }
 section.with__dividers .section__header,
@@ -229,6 +232,58 @@ article.with__dividers .section__header {
   text-shadow: 2px 2px 3px black;
   color: white;
   margin-top: 0;
+}
+
+.song__container {
+  width: 50vw;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 2px solid gray;
+  box-shadow: 0 0 3px darkgray;
+  height: 120px;
+  padding: 1rem 0;
+  margin: 1rem 0;
+  font-size: 1.2rem;
+}
+
+.deezer {
+  padding-right: 2rem;
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+}
+
+.btnPlay {
+  width: 100px;
+  height: 52px;
+  background: inherit;
+  margin-left: 20px;
+  font-size: 1.3rem;
+  font-weight: bold;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  color: darkgreen;
+  text-decoration: none;
+}
+
+#svg2 {
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+}
+
+.fa-play {
+  position: absolute;
+  z-index: 10;
+  color: black;
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
 }
 
 svg {
@@ -266,7 +321,8 @@ footer .footer__citat {
   font-weight: bolder;
   font-style: italic;
 }
-footer h3, footer h4 {
+footer h3,
+footer h4 {
   text-align: end;
   padding: 1rem 0;
   font-size: 1.3rem;
