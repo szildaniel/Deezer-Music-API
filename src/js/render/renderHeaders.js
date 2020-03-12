@@ -1,5 +1,5 @@
-export default function renderHeaders(){
-    const allSections = document.querySelectorAll('[data-year]');
+export default function renderHeaders(fragment){
+    const allSections = fragment.querySelectorAll('[data-year]');
     
     allSections.forEach( section => {
         const sectionYear = section.dataset.year;
@@ -9,4 +9,5 @@ export default function renderHeaders(){
 
         section.appendChild(newHeader);
     })
+    return fragment;
 }

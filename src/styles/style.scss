@@ -250,28 +250,21 @@ article {
   transition: all .5s;
 }
 
-.btnPlay {
+.deezer__link {
   width: 100px;
   height: 52px;
   background: inherit;
   margin-left: 20px;
   font-size: 1.3rem;
   font-weight: bold;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  justify-content: center;
+  align-items: center;
   color: darkgreen;
   text-decoration: none;
 }
 
 #svg2 {
-  -webkit-transition: all .5s;
   transition: all .5s;
 }
 
@@ -279,7 +272,6 @@ article {
   position: absolute;
   z-index: 10;
   color: black;
-  -webkit-transition: all .5s;
   transition: all .5s;
 }
 

@@ -259,6 +259,8 @@ article.with__dividers .section__header {
 .song__container img {
   height: 100%;
   width: auto;
+  line-height: 100%;
+  text-align: center;
 }
 
 .deezer {
@@ -267,28 +269,21 @@ article.with__dividers .section__header {
   transition: all 0.5s;
 }
 
-.btnPlay {
+.deezer__link {
   width: 100px;
   height: 52px;
   background: inherit;
   margin-left: 20px;
   font-size: 1.3rem;
   font-weight: bold;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-  -ms-flex-pack: center;
   justify-content: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
   align-items: center;
   color: darkgreen;
   text-decoration: none;
 }
 
 #svg2 {
-  -webkit-transition: all 0.5s;
   transition: all 0.5s;
 }
 
@@ -296,7 +291,6 @@ article.with__dividers .section__header {
   position: absolute;
   z-index: 10;
   color: black;
-  -webkit-transition: all 0.5s;
   transition: all 0.5s;
 }
 
@@ -424,7 +418,7 @@ footer .github__link {
     justify-content: center;
   }
 
-  .songsOrderedList {
+  .songs__ol {
     padding-left: 0;
     margin-left: 0;
   }
@@ -503,6 +497,32 @@ textarea {
   .nav__title h3 {
     font-size: 1.5rem;
   }
+
+  .song__container {
+    width: 80vw;
+    height: 300px;
+    margin: 1.5rem 0.8rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+  }
+  .song__container img {
+    height: 120px;
+  }
+  .song__container svg {
+    width: 120px;
+  }
+  .song__container .song__title {
+    color: black;
+    font-weight: 300;
+    font-size: 1.3rem;
+    padding-left: 1rem;
+    width: auto;
+    padding: 1.3rem 0.5rem;
+    font-size: 1.3rem;
+    text-align: center;
+    text-shadow: 0 0 5px white;
+  }
 }
 @media (max-width: 1168px) {
   body {
@@ -542,12 +562,12 @@ textarea {
     transition: 0.8s;
     width: 70vw;
     background: #4F5A80;
+    z-index: 1001;
   }
   .nav.expanded {
     justify-content: flex-start;
     position: fixed;
     right: 0;
-    z-index: 1001;
     border-right: none;
     transition: 0.5s;
   }
@@ -749,6 +769,10 @@ iframe {
 
   .section__header {
     text-align: center;
+  }
+
+  .song__container {
+    width: 75vw;
   }
 }
 

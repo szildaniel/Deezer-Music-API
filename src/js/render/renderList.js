@@ -1,5 +1,5 @@
-const renderElementsInsideLi = () => {
-  const allLi = document.querySelectorAll('ol > li');
+const renderElementsInsideLi = (fragment) => {
+  const allLi = fragment.querySelectorAll('ol > li');
 
     allLi.forEach( (li, i) => {
         const liElements = `
@@ -7,7 +7,7 @@ const renderElementsInsideLi = () => {
                     <img class="cover${i}" src="" alt="album-cover">
                     <h3 class="song__title song__title${i}">Loading data ...</h3>
                     <div class="deezer deezer${i}">
-                        <a href="" target="_blank" class="btnPlay link${i}"><i class="fa fa-play play${i}"></i>
+                        <a href="" target="_blank" class="deezer__link link${i}"><i class="fa fa-play play${i}"></i>
                             <svg id="svg2" class="logo62"
                                 xmlns="http://www.w3.org/2000/svg" viewBox="0 0 46.9 24.5" width="100" height="52">
                                 <style> .st0 {fill: #b1e3fa} .st1 {fill: #f7bacf} .st2 {fill: #e7ee9f} .st3 {fill: #feea3a}
@@ -40,8 +40,8 @@ const renderLi = (parentEl) => {
 }
 
 
-export default function renderList(){
-    const allSections = document.querySelectorAll('section');
+export default function renderList(fragment){
+    const allSections = fragment.querySelectorAll('section');
     
     allSections.forEach( (section, i) => {
         const newOl = document.createElement('ol');
@@ -51,7 +51,8 @@ export default function renderList(){
         section.appendChild(newOl);
 
         renderLi(newOl);
-        renderElementsInsideLi();
+        renderElementsInsideLi(fragment);
 
     })
+    return fragment;
 }

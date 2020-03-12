@@ -197,27 +197,30 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = renderDividers;
 
-function renderDividers() {
-  var main = document.querySelector("main");
+function renderDividers(fragment) {
+  var div = document.createElement('div');
   var sectionDividerUp = "<svg id=\"curveUpColor\" xmlns=\"http://www.w3.org/2000/svg\" version=\"1.1\" width=\"100%\" height=\"100\" viewBox=\"0 0 100 100\" preserveAspectRatio=\"none\">\n                                    <path d=\"M0 100 C 20 0 50 0 100 100 Z\" />\n                              </svg>";
   var sectionDividerDown = "<svg id=\"curveDownColor\" xmlns=\"http://www.w3.org/2000/svg\" version=\"1.1\" width=\"100%\" height=\"100\" viewBox=\"0 0 100 100\" preserveAspectRatio=\"none\">\n                                     <path d=\"M0 0 C 50 100 80 100 100 0 Z\" />\n                                </svg>";
 
   for (var i = 0; i <= 5; i++) {
-    main.innerHTML += "".concat(sectionDividerUp).concat(sectionDividerDown);
+    div.innerHTML += "".concat(sectionDividerUp).concat(sectionDividerDown);
   }
 
-  function setDataIndex() {
-    var allDividersDown = document.querySelectorAll('#curveDownColor');
-    var allDividersUp = document.querySelectorAll('#curveUpColor');
-    allDividersUp.forEach(function (divider, i) {
-      divider.setAttribute('data-dividerUp-index', i);
-    });
-    allDividersDown.forEach(function (divider, i) {
-      divider.setAttribute('data-dividerDown-index', i);
-    });
-  }
+  fragment.appendChild(div);
+  div.classList.add('container');
+  setDataIndex(fragment);
+  return fragment;
+}
 
-  setDataIndex();
+function setDataIndex(fragment) {
+  var allDividersDown = fragment.querySelectorAll('#curveDownColor');
+  var allDividersUp = fragment.querySelectorAll('#curveUpColor');
+  allDividersUp.forEach(function (divider, i) {
+    divider.setAttribute('data-dividerUp-index', i);
+  });
+  allDividersDown.forEach(function (divider, i) {
+    divider.setAttribute('data-dividerDown-index', i);
+  });
 }
 },{}],"js/render/renderSections.js":[function(require,module,exports) {
 "use strict";
@@ -227,20 +230,20 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = renderSections;
 
-function renderSections() {
-  var parentEl = document.querySelector('main');
+function renderSections(fragment) {
+  var parentEl = fragment.querySelector('div');
 
   function renderSectionWithDividers() {
     for (var i = 0; i < 6; i++) {
       var newSection = document.createElement('section');
-      var currentDividerDown = document.querySelector("[data-dividerDown-index=\"".concat(i, "\"]"));
+      var currentDividerDown = fragment.querySelector("[data-dividerDown-index=\"".concat(i, "\"]"));
       newSection.classList.add('with__dividers');
       parentEl.insertBefore(newSection, currentDividerDown);
     }
   }
 
-  function renderSectionWithoutDividers() {
-    var allDividerUp = document.querySelectorAll("[data-dividerUp-index]");
+  function renderSectionWithoutDividers(fragment) {
+    var allDividerUp = fragment.querySelectorAll("[data-dividerUp-index]");
     allDividerUp.forEach(function (el, i) {
       if (i !== 0) {
         var newSection = document.createElement('section');
@@ -250,7 +253,7 @@ function renderSections() {
   }
 
   function addYearAttributeToSections() {
-    var allSections = document.querySelectorAll('section');
+    var allSections = fragment.querySelectorAll('section');
     allSections.forEach(function (section, i) {
       section.setAttribute('data-year', "".concat(1990 + i));
       section.setAttribute('id', "".concat(1990 + i));
@@ -258,8 +261,9 @@ function renderSections() {
   }
 
   renderSectionWithDividers();
-  renderSectionWithoutDividers();
+  renderSectionWithoutDividers(fragment);
   addYearAttributeToSections();
+  return fragment;
 }
 },{}],"js/render/renderHeaders.js":[function(require,module,exports) {
 "use strict";
@@ -269,8 +273,8 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = renderHeaders;
 
-function renderHeaders() {
-  var allSections = document.querySelectorAll('[data-year]');
+function renderHeaders(fragment) {
+  var allSections = fragment.querySelectorAll('[data-year]');
   allSections.forEach(function (section) {
     var sectionYear = section.dataset.year;
     var newHeader = document.createElement('h3');
@@ -278,6 +282,7 @@ function renderHeaders() {
     newHeader.textContent = "Top 10 tracks of year ".concat(sectionYear, " by Billboard");
     section.appendChild(newHeader);
   });
+  return fragment;
 }
 },{}],"js/render/renderList.js":[function(require,module,exports) {
 "use strict";
@@ -287,10 +292,10 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = renderList;
 
-var renderElementsInsideLi = function renderElementsInsideLi() {
-  var allLi = document.querySelectorAll('ol > li');
+var renderElementsInsideLi = function renderElementsInsideLi(fragment) {
+  var allLi = fragment.querySelectorAll('ol > li');
   allLi.forEach(function (li, i) {
-    var liElements = "\n                <div class=\"song__container\">\n                    <img class=\"cover".concat(i, "\" src=\"\" alt=\"album-cover\">\n                    <h3 class=\"song__title song__title").concat(i, "\"></h3>\n                    <div class=\"deezer deezer").concat(i, "\">\n                        <a href=\"\" target=\"_blank\" class=\"btnPlay btn").concat(i, "\"><i class=\"fa fa-play play").concat(i, "\"></i>\n                            <svg id=\"svg2\" class=\"logo62\"\n                                xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 46.9 24.5\" width=\"100\" height=\"52\">\n                                <style> .st0 {fill: #b1e3fa} .st1 {fill: #f7bacf} .st2 {fill: #e7ee9f} .st3 {fill: #feea3a}\n                                 .st4 {fill: #fe9d7f} .st5 {fill: #4ec2f6} .st6 {fill: #ccdb38} .st7 {fill: #fe3f80} .st8 {fill: #fe3d02}\n                                </style>\n                                <path id=\"path59\" class=\"st0\" d=\"M38.3 13.9v-1h8.6v2h-8.6v-1zm0-3.2v-1h8.6v2h-8.6v-1zm0-3.2v-1h8.6v2h-8.6v-1zm0-3.3v-1h8.6v2.1h-8.6V4.2zm0-3.1V0h8.6v2.2h-8.6V1.1z\" />\n                                <path id=\"path57\" class=\"st1\" d=\"M19.1 13.9v-1h8.6v2h-8.6v-1zm0-3.2v-1h8.6v2h-8.6v-1zm0-3.2v-1h8.6v2h-8.6v-1zm0-3.3v-1h8.6v2.1h-8.6V4.2z\" />\n                                <path id=\"path55\" class=\"st2\" d=\"M28.7 13.9v-1h8.6v2h-8.6v-1zm0-3.2v-1h8.6v2h-8.6v-1z\" />\n                                <path id=\"path53\" class=\"st3\" d=\"M9.6 23.5v-1H18v2H9.6v-1zm0-3.3v-1H18v2H9.6v-1zm0-3.2v-1H18v2H9.6v-1z\" />\n                                <path id=\"path51\" class=\"st4\" d=\"M0 13.9v-1h8.4v2H0v-1zm0-3.2v-1h8.4v2H0v-1z\" />\n                                <path id=\"path49\" class=\"st5\" d=\"M38.4 23.5v-1h8.4v2h-8.4v-1zm0-3.3v-1h8.4v2h-8.4v-1zm0-3.2v-1h8.4v2h-8.4v-1z\" />\n                                <path id=\"path47\" class=\"st6\" d=\"M28.8 23.5v-1h8.4v2h-8.4v-1zm0-3.3v-1h8.4v2h-8.4v-1zm0-3.2v-1h8.4v2h-8.4v-1z\" />\n                                <path id=\"path45\" class=\"st7\" d=\"M19.2 23.5v-1h8.4v2h-8.4v-1zm0-3.3v-1h8.4v2h-8.4v-1zm0-3.2v-1h8.4v2h-8.4v-1z\" />\n                                <path id=\"path43\" class=\"st8\" d=\"M0 23.5v-1h8.4v2H0v-1zm0-3.3v-1h8.4v2H0v-1zM0 17v-1h8.4v2H0v-1z\" />\n                            </svg>\n                        </a>\n                    </div>\n                </div>");
+    var liElements = "\n                <div class=\"song__container\">\n                    <img class=\"cover".concat(i, "\" src=\"\" alt=\"album-cover\">\n                    <h3 class=\"song__title song__title").concat(i, "\">Loading data ...</h3>\n                    <div class=\"deezer deezer").concat(i, "\">\n                        <a href=\"\" target=\"_blank\" class=\"deezer__link link").concat(i, "\"><i class=\"fa fa-play play").concat(i, "\"></i>\n                            <svg id=\"svg2\" class=\"logo62\"\n                                xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 46.9 24.5\" width=\"100\" height=\"52\">\n                                <style> .st0 {fill: #b1e3fa} .st1 {fill: #f7bacf} .st2 {fill: #e7ee9f} .st3 {fill: #feea3a}\n                                 .st4 {fill: #fe9d7f} .st5 {fill: #4ec2f6} .st6 {fill: #ccdb38} .st7 {fill: #fe3f80} .st8 {fill: #fe3d02}\n                                </style>\n                                <path id=\"path59\" class=\"st0\" d=\"M38.3 13.9v-1h8.6v2h-8.6v-1zm0-3.2v-1h8.6v2h-8.6v-1zm0-3.2v-1h8.6v2h-8.6v-1zm0-3.3v-1h8.6v2.1h-8.6V4.2zm0-3.1V0h8.6v2.2h-8.6V1.1z\" />\n                                <path id=\"path57\" class=\"st1\" d=\"M19.1 13.9v-1h8.6v2h-8.6v-1zm0-3.2v-1h8.6v2h-8.6v-1zm0-3.2v-1h8.6v2h-8.6v-1zm0-3.3v-1h8.6v2.1h-8.6V4.2z\" />\n                                <path id=\"path55\" class=\"st2\" d=\"M28.7 13.9v-1h8.6v2h-8.6v-1zm0-3.2v-1h8.6v2h-8.6v-1z\" />\n                                <path id=\"path53\" class=\"st3\" d=\"M9.6 23.5v-1H18v2H9.6v-1zm0-3.3v-1H18v2H9.6v-1zm0-3.2v-1H18v2H9.6v-1z\" />\n                                <path id=\"path51\" class=\"st4\" d=\"M0 13.9v-1h8.4v2H0v-1zm0-3.2v-1h8.4v2H0v-1z\" />\n                                <path id=\"path49\" class=\"st5\" d=\"M38.4 23.5v-1h8.4v2h-8.4v-1zm0-3.3v-1h8.4v2h-8.4v-1zm0-3.2v-1h8.4v2h-8.4v-1z\" />\n                                <path id=\"path47\" class=\"st6\" d=\"M28.8 23.5v-1h8.4v2h-8.4v-1zm0-3.3v-1h8.4v2h-8.4v-1zm0-3.2v-1h8.4v2h-8.4v-1z\" />\n                                <path id=\"path45\" class=\"st7\" d=\"M19.2 23.5v-1h8.4v2h-8.4v-1zm0-3.3v-1h8.4v2h-8.4v-1zm0-3.2v-1h8.4v2h-8.4v-1z\" />\n                                <path id=\"path43\" class=\"st8\" d=\"M0 23.5v-1h8.4v2H0v-1zm0-3.3v-1h8.4v2H0v-1zM0 17v-1h8.4v2H0v-1z\" />\n                            </svg>\n                        </a>\n                    </div>\n                </div>");
     li.innerHTML = liElements;
   });
 };
@@ -302,16 +307,17 @@ var renderLi = function renderLi(parentEl) {
   }
 };
 
-function renderList() {
-  var allSections = document.querySelectorAll('section');
+function renderList(fragment) {
+  var allSections = fragment.querySelectorAll('section');
   allSections.forEach(function (section, i) {
     var newOl = document.createElement('ol');
     var year = 1990 + i;
-    newOl.classList.add('songsOrderedList', "s".concat(year));
+    newOl.classList.add('songs__ol', "s".concat(year));
     section.appendChild(newOl);
     renderLi(newOl);
-    renderElementsInsideLi();
+    renderElementsInsideLi(fragment);
   });
+  return fragment;
 }
 },{}],"js/render/render.js":[function(require,module,exports) {
 "use strict";
@@ -331,11 +337,15 @@ var _renderList = _interopRequireDefault(require("./renderList"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+var main = document.querySelector('main');
+var fragment = document.createDocumentFragment();
+
 function renderRepeatableHtml() {
-  (0, _renderDividers.default)();
-  (0, _renderSections.default)();
-  (0, _renderHeaders.default)();
-  (0, _renderList.default)();
+  (0, _renderDividers.default)(fragment);
+  (0, _renderSections.default)(fragment);
+  (0, _renderHeaders.default)(fragment);
+  (0, _renderList.default)(fragment);
+  main.appendChild(fragment);
 }
 },{"./renderDividers":"js/render/renderDividers.js","./renderSections":"js/render/renderSections.js","./renderHeaders":"js/render/renderHeaders.js","./renderList":"js/render/renderList.js"}],"js/getData.js":[function(require,module,exports) {
 "use strict";
@@ -343,11 +353,11 @@ function renderRepeatableHtml() {
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.getData = getData;
-exports.myData = void 0;
-var myData = []; // let yearIndex = 0;
+exports.fetchData = fetchData;
 
-exports.myData = myData;
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
 function initDeezerApi() {
   DZ.init({
@@ -356,43 +366,173 @@ function initDeezerApi() {
   });
 }
 
-function reduceData(data) {
-  data.map(function (song, i) {
-    var id = song.id;
-    var artist = song.artist.name;
-    var title = song.title_short;
-    var link = song.link;
-    var img = song.album.cover;
-    var necessary = {
-      id: id,
-      artist: artist,
-      title: title,
-      link: link,
-      img: img
-    }; // if(i%10 === 0){
-    //       yearIndex++;
-    // }
-
-    pushData(necessary); // myData[yearIndex-1].push(necessary);
-  });
+function reduceData(_x) {
+  return _reduceData.apply(this, arguments);
 }
 
-function pushData(data) {
-  myData.push(data);
+function _reduceData() {
+  _reduceData = _asyncToGenerator(
+  /*#__PURE__*/
+  regeneratorRuntime.mark(function _callee2(fetchedData) {
+    var fetchedTracks, arrPromises, reducedData;
+    return regeneratorRuntime.wrap(function _callee2$(_context2) {
+      while (1) {
+        switch (_context2.prev = _context2.next) {
+          case 0:
+            fetchedTracks = fetchedData.tracks.data;
+            arrPromises = fetchedTracks.map(
+            /*#__PURE__*/
+            function () {
+              var _ref = _asyncToGenerator(
+              /*#__PURE__*/
+              regeneratorRuntime.mark(function _callee(song) {
+                var id, artist, title, link, cover, neededData;
+                return regeneratorRuntime.wrap(function _callee$(_context) {
+                  while (1) {
+                    switch (_context.prev = _context.next) {
+                      case 0:
+                        _context.next = 2;
+                        return song.id;
+
+                      case 2:
+                        id = _context.sent;
+                        _context.next = 5;
+                        return song.artist.name;
+
+                      case 5:
+                        artist = _context.sent;
+                        _context.next = 8;
+                        return song.title_short;
+
+                      case 8:
+                        title = _context.sent;
+                        _context.next = 11;
+                        return song.link;
+
+                      case 11:
+                        link = _context.sent;
+                        _context.next = 14;
+                        return song.album.cover;
+
+                      case 14:
+                        cover = _context.sent;
+                        neededData = {
+                          id: id,
+                          artist: artist,
+                          title: title,
+                          link: link,
+                          cover: cover
+                        };
+                        return _context.abrupt("return", neededData);
+
+                      case 17:
+                      case "end":
+                        return _context.stop();
+                    }
+                  }
+                }, _callee);
+              }));
+
+              return function (_x2) {
+                return _ref.apply(this, arguments);
+              };
+            }());
+            _context2.next = 4;
+            return Promise.all(arrPromises);
+
+          case 4:
+            reducedData = _context2.sent;
+            return _context2.abrupt("return", reducedData);
+
+          case 6:
+          case "end":
+            return _context2.stop();
+        }
+      }
+    }, _callee2);
+  }));
+  return _reduceData.apply(this, arguments);
 }
 
 function fetchData() {
-  DZ.api("/playlist/6855206804", function getDataFromPlaylist(response) {
-    var fetchedData = response.tracks.data;
-    reduceData(fetchedData);
+  return _fetchData.apply(this, arguments);
+}
+
+function _fetchData() {
+  _fetchData = _asyncToGenerator(
+  /*#__PURE__*/
+  regeneratorRuntime.mark(function _callee3() {
+    var response, fetchedData;
+    return regeneratorRuntime.wrap(function _callee3$(_context3) {
+      while (1) {
+        switch (_context3.prev = _context3.next) {
+          case 0:
+            _context3.next = 2;
+            return fetch("https://deezerdevs-deezer.p.rapidapi.com/playlist/6855206804", {
+              method: "GET",
+              headers: {
+                "x-rapidapi-host": "deezerdevs-deezer.p.rapidapi.com",
+                "x-rapidapi-key": "610f368d39msh50b77c7d51240b9p154254jsndad7a4a4048e"
+              }
+            });
+
+          case 2:
+            response = _context3.sent;
+            _context3.next = 5;
+            return response.json();
+
+          case 5:
+            fetchedData = _context3.sent;
+            return _context3.abrupt("return", reduceData(fetchedData));
+
+          case 7:
+          case "end":
+            return _context3.stop();
+        }
+      }
+    }, _callee3);
+  }));
+  return _fetchData.apply(this, arguments);
+}
+},{}],"js/setData.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.setData = setData;
+
+var _getData = require("./getData");
+
+var songIndex = 0;
+
+function setData() {
+  (0, _getData.fetchData)().then(function (data) {
+    return data.forEach(function (song, i) {
+      setSongIndex(i);
+      var title = song.title,
+          artist = song.artist,
+          cover = song.cover,
+          link = song.link;
+      var currentHeader = document.querySelector(".song__title".concat(i));
+      var currentImage = document.querySelector(".cover".concat(i));
+      var currentLink = document.querySelector(".link".concat(i));
+      currentHeader.innerHTML = "".concat(songIndex + 1, ". ").concat(artist, " - ").concat(title);
+      currentImage.setAttribute('src', cover);
+      currentImage.setAttribute('alt', title);
+      currentLink.setAttribute('href', link);
+    });
   });
 }
 
-function getData() {
-  initDeezerApi();
-  fetchData();
+function setSongIndex(index) {
+  songIndex++;
+
+  if (index % 10 === 0) {
+    songIndex = 0;
+  }
 }
-},{}],"js/helpers/nav.js":[function(require,module,exports) {
+},{"./getData":"js/getData.js"}],"js/helpers/nav.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -1006,7 +1146,7 @@ require("../styles/style.scss");
 
 var _render = _interopRequireDefault(require("./render/render"));
 
-var _getData = require("./getData");
+var _setData = require("./setData");
 
 var _nav = require("./helpers/nav");
 
@@ -1023,7 +1163,7 @@ var _setCurrentClassToNavLinks = require("./helpers/setCurrentClassToNavLinks");
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 (0, _render.default)();
-(0, _getData.getData)();
+(0, _setData.setData)();
 (0, _enjoyBtnAnimations.enjoyBtnHoverAnimation)();
 (0, _nav.toggleNav)();
 
@@ -1032,18 +1172,7 @@ _smoothscrollPolyfill.default.polyfill();
 (0, _hamburgerAnimation.hamburgerAnimation)();
 (0, _setResponsiveNavHeight.setResponsiveNavHeight)();
 (0, _setCurrentClassToNavLinks.setCurrentClassToNavLinks)();
-setTimeout(function () {
-  _getData.myData.forEach(function (song, i) {
-    var title = song.title;
-    var artist = song.artist;
-    var cover = song.img;
-    var currentHeader = document.querySelector(".song__title".concat(i));
-    var currentImage = document.querySelector(".cover".concat(i));
-    currentHeader.innerHTML = "".concat(i + 1, ". ").concat(artist, " - ").concat(title);
-    currentImage.setAttribute('src', cover);
-  });
-}, 1000);
-},{"../styles/style.scss":"styles/style.scss","./render/render":"js/render/render.js","./getData":"js/getData.js","./helpers/nav":"js/helpers/nav.js","smoothscroll-polyfill":"../node_modules/smoothscroll-polyfill/dist/smoothscroll.js","./animations/hamburgerAnimation":"js/animations/hamburgerAnimation.js","./animations/enjoyBtnAnimations":"js/animations/enjoyBtnAnimations.js","./helpers/setResponsiveNavHeight":"js/helpers/setResponsiveNavHeight.js","./helpers/setCurrentClassToNavLinks":"js/helpers/setCurrentClassToNavLinks.js"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"../styles/style.scss":"styles/style.scss","./render/render":"js/render/render.js","./setData":"js/setData.js","./helpers/nav":"js/helpers/nav.js","smoothscroll-polyfill":"../node_modules/smoothscroll-polyfill/dist/smoothscroll.js","./animations/hamburgerAnimation":"js/animations/hamburgerAnimation.js","./animations/enjoyBtnAnimations":"js/animations/enjoyBtnAnimations.js","./helpers/setResponsiveNavHeight":"js/helpers/setResponsiveNavHeight.js","./helpers/setCurrentClassToNavLinks":"js/helpers/setCurrentClassToNavLinks.js"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -1071,7 +1200,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "49536" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "49349" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
