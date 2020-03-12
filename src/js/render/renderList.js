@@ -5,9 +5,9 @@ const renderElementsInsideLi = () => {
         const liElements = `
                 <div class="song__container">
                     <img class="cover${i}" src="" alt="album-cover">
-                    <h3 class="song__title song__title${i}">Title ${i}</h3>
+                    <h3 class="song__title song__title${i}">Loading data ...</h3>
                     <div class="deezer deezer${i}">
-                        <a href="" target="_blank" class="btnPlay btn${i}"><i class="fa fa-play play${i}"></i>
+                        <a href="" target="_blank" class="btnPlay link${i}"><i class="fa fa-play play${i}"></i>
                             <svg id="svg2" class="logo62"
                                 xmlns="http://www.w3.org/2000/svg" viewBox="0 0 46.9 24.5" width="100" height="52">
                                 <style> .st0 {fill: #b1e3fa} .st1 {fill: #f7bacf} .st2 {fill: #e7ee9f} .st3 {fill: #feea3a}
@@ -47,7 +47,7 @@ export default function renderList(){
         const newOl = document.createElement('ol');
         const year = 1990+i;
     
-        newOl.classList.add('songsOrderedList', `s${year}`);
+        newOl.classList.add('songs__ol', `s${year}`);
         section.appendChild(newOl);
 
         renderLi(newOl);

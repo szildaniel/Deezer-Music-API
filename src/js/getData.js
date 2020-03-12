@@ -1,61 +1,42 @@
-const myData = {
-  1990: [],
-  1991: [],
-  1992: [],
-  1993: [],
-  1994: [], 
-  1995: [], 
-  1996: [], 
-  1997: [], 
-  1998: [],
-  1999: [],
-  2000: [], 
-}
-let yearIndex = 1990;
-
-function initDeezerApi(){
+function initDeezerApi() {
   DZ.init({
     appId: "384884",
     channelUrl: "https://szildaniel.github.io/music-API/"
   });
 }
 
-function reduceData(data){
-    data.map( (song, i) => {
-      
-    const id = song.id;
-    const artist = song.artist.name;
-    const title = song.title_short;
-    const link = song.link;
-    const img = song.album.cover_small;
-    
-    const necessary = {id, artist, title, link, img } 
+async function reduceData(fetchedData) {
 
-    if(i%10 === 0){
-          yearIndex++;
+  const fetchedTracks = fetchedData.tracks.data;
+  const arrPromises = fetchedTracks.map(async song => {
+    
+    const id = await song.id;
+    const artist = await song.artist.name;
+    const title = await song.title_short;
+    const link = await song.link;
+    const cover = await song.album.cover;
+
+    const neededData = { id, artist, title, link, cover };
+    return neededData;
+  });
+
+  const reducedData = await Promise.all(arrPromises);
+
+  return reducedData;
+}
+
+export async function fetchData() {
+  let response = await fetch(
+    "https://deezerdevs-deezer.p.rapidapi.com/playlist/6855206804",
+    {
+      method: "GET",
+      headers: {
+        "x-rapidapi-host": "deezerdevs-deezer.p.rapidapi.com",
+        "x-rapidapi-key": "610f368d39msh50b77c7d51240b9p154254jsndad7a4a4048e"
+      }
     }
-    pushData(yearIndex-1,necessary);
-    // myData[yearIndex-1].push(necessary);
-    })
+  );
+
+  let fetchedData = await response.json();
+  return reduceData(fetchedData);
 }
-function pushData(index, data){
-  myData[index].push(data);
-
-}
-function fetchData(){
-  DZ.api("/playlist/6855206804", function getDataFromPlaylist(response) {
-    const fetchedData = response.tracks.data;
-
-      reduceData(fetchedData);
-    });
-    
-}
-export function getData(){
-    initDeezerApi();
-    fetchData();
-}
-
-export { myData };
-
-
-

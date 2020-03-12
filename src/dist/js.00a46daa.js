@@ -290,7 +290,7 @@ exports.default = renderList;
 var renderElementsInsideLi = function renderElementsInsideLi() {
   var allLi = document.querySelectorAll('ol > li');
   allLi.forEach(function (li, i) {
-    var liElements = "\n                <div class=\"song__container\">\n                    <img class=\"cover".concat(i, "\" src=\"\" alt=\"album-cover\">\n                    <h3 class=\"song__title song__title").concat(i, "\">Title ").concat(i, "</h3>\n                    <div class=\"deezer deezer").concat(i, "\">\n                        <a href=\"\" target=\"_blank\" class=\"btnPlay btn").concat(i, "\"><i class=\"fa fa-play play").concat(i, "\"></i>\n                            <svg id=\"svg2\" class=\"logo62\"\n                                xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 46.9 24.5\" width=\"100\" height=\"52\">\n                                <style> .st0 {fill: #b1e3fa} .st1 {fill: #f7bacf} .st2 {fill: #e7ee9f} .st3 {fill: #feea3a}\n                                 .st4 {fill: #fe9d7f} .st5 {fill: #4ec2f6} .st6 {fill: #ccdb38} .st7 {fill: #fe3f80} .st8 {fill: #fe3d02}\n                                </style>\n                                <path id=\"path59\" class=\"st0\" d=\"M38.3 13.9v-1h8.6v2h-8.6v-1zm0-3.2v-1h8.6v2h-8.6v-1zm0-3.2v-1h8.6v2h-8.6v-1zm0-3.3v-1h8.6v2.1h-8.6V4.2zm0-3.1V0h8.6v2.2h-8.6V1.1z\" />\n                                <path id=\"path57\" class=\"st1\" d=\"M19.1 13.9v-1h8.6v2h-8.6v-1zm0-3.2v-1h8.6v2h-8.6v-1zm0-3.2v-1h8.6v2h-8.6v-1zm0-3.3v-1h8.6v2.1h-8.6V4.2z\" />\n                                <path id=\"path55\" class=\"st2\" d=\"M28.7 13.9v-1h8.6v2h-8.6v-1zm0-3.2v-1h8.6v2h-8.6v-1z\" />\n                                <path id=\"path53\" class=\"st3\" d=\"M9.6 23.5v-1H18v2H9.6v-1zm0-3.3v-1H18v2H9.6v-1zm0-3.2v-1H18v2H9.6v-1z\" />\n                                <path id=\"path51\" class=\"st4\" d=\"M0 13.9v-1h8.4v2H0v-1zm0-3.2v-1h8.4v2H0v-1z\" />\n                                <path id=\"path49\" class=\"st5\" d=\"M38.4 23.5v-1h8.4v2h-8.4v-1zm0-3.3v-1h8.4v2h-8.4v-1zm0-3.2v-1h8.4v2h-8.4v-1z\" />\n                                <path id=\"path47\" class=\"st6\" d=\"M28.8 23.5v-1h8.4v2h-8.4v-1zm0-3.3v-1h8.4v2h-8.4v-1zm0-3.2v-1h8.4v2h-8.4v-1z\" />\n                                <path id=\"path45\" class=\"st7\" d=\"M19.2 23.5v-1h8.4v2h-8.4v-1zm0-3.3v-1h8.4v2h-8.4v-1zm0-3.2v-1h8.4v2h-8.4v-1z\" />\n                                <path id=\"path43\" class=\"st8\" d=\"M0 23.5v-1h8.4v2H0v-1zm0-3.3v-1h8.4v2H0v-1zM0 17v-1h8.4v2H0v-1z\" />\n                            </svg>\n                        </a>\n                    </div>\n                </div>");
+    var liElements = "\n                <div class=\"song__container\">\n                    <img class=\"cover".concat(i, "\" src=\"\" alt=\"album-cover\">\n                    <h3 class=\"song__title song__title").concat(i, "\"></h3>\n                    <div class=\"deezer deezer").concat(i, "\">\n                        <a href=\"\" target=\"_blank\" class=\"btnPlay btn").concat(i, "\"><i class=\"fa fa-play play").concat(i, "\"></i>\n                            <svg id=\"svg2\" class=\"logo62\"\n                                xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 46.9 24.5\" width=\"100\" height=\"52\">\n                                <style> .st0 {fill: #b1e3fa} .st1 {fill: #f7bacf} .st2 {fill: #e7ee9f} .st3 {fill: #feea3a}\n                                 .st4 {fill: #fe9d7f} .st5 {fill: #4ec2f6} .st6 {fill: #ccdb38} .st7 {fill: #fe3f80} .st8 {fill: #fe3d02}\n                                </style>\n                                <path id=\"path59\" class=\"st0\" d=\"M38.3 13.9v-1h8.6v2h-8.6v-1zm0-3.2v-1h8.6v2h-8.6v-1zm0-3.2v-1h8.6v2h-8.6v-1zm0-3.3v-1h8.6v2.1h-8.6V4.2zm0-3.1V0h8.6v2.2h-8.6V1.1z\" />\n                                <path id=\"path57\" class=\"st1\" d=\"M19.1 13.9v-1h8.6v2h-8.6v-1zm0-3.2v-1h8.6v2h-8.6v-1zm0-3.2v-1h8.6v2h-8.6v-1zm0-3.3v-1h8.6v2.1h-8.6V4.2z\" />\n                                <path id=\"path55\" class=\"st2\" d=\"M28.7 13.9v-1h8.6v2h-8.6v-1zm0-3.2v-1h8.6v2h-8.6v-1z\" />\n                                <path id=\"path53\" class=\"st3\" d=\"M9.6 23.5v-1H18v2H9.6v-1zm0-3.3v-1H18v2H9.6v-1zm0-3.2v-1H18v2H9.6v-1z\" />\n                                <path id=\"path51\" class=\"st4\" d=\"M0 13.9v-1h8.4v2H0v-1zm0-3.2v-1h8.4v2H0v-1z\" />\n                                <path id=\"path49\" class=\"st5\" d=\"M38.4 23.5v-1h8.4v2h-8.4v-1zm0-3.3v-1h8.4v2h-8.4v-1zm0-3.2v-1h8.4v2h-8.4v-1z\" />\n                                <path id=\"path47\" class=\"st6\" d=\"M28.8 23.5v-1h8.4v2h-8.4v-1zm0-3.3v-1h8.4v2h-8.4v-1zm0-3.2v-1h8.4v2h-8.4v-1z\" />\n                                <path id=\"path45\" class=\"st7\" d=\"M19.2 23.5v-1h8.4v2h-8.4v-1zm0-3.3v-1h8.4v2h-8.4v-1zm0-3.2v-1h8.4v2h-8.4v-1z\" />\n                                <path id=\"path43\" class=\"st8\" d=\"M0 23.5v-1h8.4v2H0v-1zm0-3.3v-1h8.4v2H0v-1zM0 17v-1h8.4v2H0v-1z\" />\n                            </svg>\n                        </a>\n                    </div>\n                </div>");
     li.innerHTML = liElements;
   });
 };
@@ -345,21 +345,9 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.getData = getData;
 exports.myData = void 0;
-var myData = {
-  1990: [],
-  1991: [],
-  1992: [],
-  1993: [],
-  1994: [],
-  1995: [],
-  1996: [],
-  1997: [],
-  1998: [],
-  1999: [],
-  2000: []
-};
+var myData = []; // let yearIndex = 0;
+
 exports.myData = myData;
-var yearIndex = 1990;
 
 function initDeezerApi() {
   DZ.init({
@@ -374,25 +362,23 @@ function reduceData(data) {
     var artist = song.artist.name;
     var title = song.title_short;
     var link = song.link;
-    var img = song.album.cover_small;
+    var img = song.album.cover;
     var necessary = {
       id: id,
       artist: artist,
       title: title,
       link: link,
       img: img
-    };
+    }; // if(i%10 === 0){
+    //       yearIndex++;
+    // }
 
-    if (i % 10 === 0) {
-      yearIndex++;
-    }
-
-    pushData(yearIndex - 1, necessary); // myData[yearIndex-1].push(necessary);
+    pushData(necessary); // myData[yearIndex-1].push(necessary);
   });
 }
 
-function pushData(index, data) {
-  myData[index].push(data);
+function pushData(data) {
+  myData.push(data);
 }
 
 function fetchData() {
@@ -1045,7 +1031,18 @@ _smoothscrollPolyfill.default.polyfill();
 
 (0, _hamburgerAnimation.hamburgerAnimation)();
 (0, _setResponsiveNavHeight.setResponsiveNavHeight)();
-(0, _setCurrentClassToNavLinks.setCurrentClassToNavLinks)(); // console.log(myData);
+(0, _setCurrentClassToNavLinks.setCurrentClassToNavLinks)();
+setTimeout(function () {
+  _getData.myData.forEach(function (song, i) {
+    var title = song.title;
+    var artist = song.artist;
+    var cover = song.img;
+    var currentHeader = document.querySelector(".song__title".concat(i));
+    var currentImage = document.querySelector(".cover".concat(i));
+    currentHeader.innerHTML = "".concat(i + 1, ". ").concat(artist, " - ").concat(title);
+    currentImage.setAttribute('src', cover);
+  });
+}, 1000);
 },{"../styles/style.scss":"styles/style.scss","./render/render":"js/render/render.js","./getData":"js/getData.js","./helpers/nav":"js/helpers/nav.js","smoothscroll-polyfill":"../node_modules/smoothscroll-polyfill/dist/smoothscroll.js","./animations/hamburgerAnimation":"js/animations/hamburgerAnimation.js","./animations/enjoyBtnAnimations":"js/animations/enjoyBtnAnimations.js","./helpers/setResponsiveNavHeight":"js/helpers/setResponsiveNavHeight.js","./helpers/setCurrentClassToNavLinks":"js/helpers/setCurrentClassToNavLinks.js"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
@@ -1074,7 +1071,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "62076" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "49536" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

@@ -235,6 +235,7 @@ article.with__dividers .section__header {
 }
 
 .song__container {
+  background: #cacaca;
   width: 50vw;
   display: flex;
   justify-content: space-between;
@@ -242,13 +243,26 @@ article.with__dividers .section__header {
   border: 2px solid gray;
   box-shadow: 0 0 3px darkgray;
   height: 120px;
-  padding: 1rem 0;
   margin: 1rem 0;
   font-size: 1.2rem;
 }
+.song__container .song__title {
+  color: black;
+  font-weight: 300;
+  font-size: 1.3rem;
+  padding-left: 1rem;
+  width: 500px;
+}
+.song__container.with__dividers > .song__title {
+  color: white;
+}
+.song__container img {
+  height: 100%;
+  width: auto;
+}
 
 .deezer {
-  padding-right: 2rem;
+  padding-right: 1rem;
   -webkit-transition: all 0.5s;
   transition: all 0.5s;
 }
@@ -705,6 +719,11 @@ iframe {
 
   .search-div input {
     margin: 0.5rem 0;
+  }
+}
+@media only screen and (max-width: 1600px) {
+  .nav a {
+    padding: 4px;
   }
 }
 @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {

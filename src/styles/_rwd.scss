@@ -52,7 +52,7 @@
     display: flex;
     justify-content: center;
   }
-  .songsOrderedList {
+  .songs__ol {
     padding-left: 0;
     margin-left: 0;
   }
@@ -67,7 +67,7 @@
       margin-bottom: 0;
     }
   }
-  .section__header{
+  .section__header {
     text-align: center;
     font-size: 1.5rem;
   }
@@ -118,8 +118,34 @@
   textarea {
     font-size: 1.1rem;
   }
-  .nav__title h3{
+  .nav__title h3 {
     font-size: 1.5rem;
+  }
+
+  .song__container {
+    width: 80vw;
+    height: 300px;
+    margin: 1.5rem 0.8rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    img {
+      height: 120px;
+    }
+    svg {
+      width: 120px;
+    }
+    .song__title {
+      color: black;
+      font-weight: 300;
+      font-size: 1.3rem;
+      padding-left: 1rem;
+      width: auto;
+      padding: 1.3rem 0.5rem;
+      font-size: 1.3rem;
+      text-align: center;
+      text-shadow: 0 0 5px white;
+    }
   }
 }
 // smarthphones, ipads and tablets
@@ -142,10 +168,10 @@
     transform: translateY(-50%);
     color: white;
     text-shadow: 2px 2px 3px black;
-    h1{
-      display:none;
+    h1 {
+      display: none;
     }
-    h2{
+    h2 {
       font-size: 1.15rem;
       text-align: justify;
       margin: 0;
@@ -157,11 +183,11 @@
     transition: 0.8s;
     width: 70vw;
     background: $menuLi;
+    z-index: 1001;
     &.expanded {
       justify-content: flex-start;
       position: fixed;
       right: 0;
-      z-index: 1001;
       border-right: none;
       transition: 0.5s;
     }
@@ -186,7 +212,7 @@
       justify-content: space-between;
     }
   }
- 
+
   .nav__closeBtn {
     display: none;
     transform: translateX(-250px);
@@ -326,29 +352,35 @@
     margin: 0.5rem 0;
   }
 }
+//only laptops
+@media only screen and (max-width: 1600px) {
+  .nav a {
+    padding: 4px;
+  }
+}
 // only iPads, tablets
-@media only screen 
-and (min-device-width : 768px) 
-and (max-device-width : 1024px)  { 
-  .nav{
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+  .nav {
     right: -600px;
     width: 350px;
   }
-  .nav__title{
+  .nav__title {
     font-size: 1.8rem;
   }
-  .header__text{
+  .header__text {
     width: 80vw;
     top: 60%;
     left: 50%;
     transform: translate(-50%, -50%);
-    h2{
+    h2 {
       font-size: 1.8rem;
       text-align: center;
     }
   }
-  .section__header{
+  .section__header {
     text-align: center;
   }
+  .song__container{
+    width: 75vw;
+  }
 }
-    

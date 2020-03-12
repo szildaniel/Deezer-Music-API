@@ -33,6 +33,10 @@ header {
   text-align: center;
 }
 
+ol {
+  list-style: none;
+}
+
 ul {
   list-style: none;
   margin: 0;
@@ -208,7 +212,6 @@ ul {
 
 section,
 article {
-  height: 300px;
   padding: 2rem;
   margin: 0 0 2rem 0;
   display: flex;
@@ -220,8 +223,8 @@ article.with__dividers {
   background: #3498db;
   margin-bottom: 0;
 }
-section.with__dividers .songdata,
-article.with__dividers .songdata {
+section.with__dividers .song__container,
+article.with__dividers .song__container {
   background: #ffaf3d;
 }
 section.with__dividers .section__header,
@@ -229,6 +232,74 @@ article.with__dividers .section__header {
   text-shadow: 2px 2px 3px black;
   color: white;
   margin-top: 0;
+}
+
+.song__container {
+  background: #cacaca;
+  width: 50vw;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 2px solid gray;
+  box-shadow: 0 0 3px darkgray;
+  height: 120px;
+  margin: 1rem 0;
+  font-size: 1.2rem;
+}
+.song__container .song__title {
+  color: black;
+  font-weight: 300;
+  font-size: 1.3rem;
+  padding-left: 1rem;
+  width: 500px;
+}
+.song__container.with__dividers > .song__title {
+  color: white;
+}
+.song__container img {
+  height: 100%;
+  width: auto;
+  line-height: 100%;
+  text-align: center;
+}
+
+.deezer {
+  padding-right: 1rem;
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+}
+
+.btnPlay {
+  width: 100px;
+  height: 52px;
+  background: inherit;
+  margin-left: 20px;
+  font-size: 1.3rem;
+  font-weight: bold;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  color: darkgreen;
+  text-decoration: none;
+}
+
+#svg2 {
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+}
+
+.fa-play {
+  position: absolute;
+  z-index: 10;
+  color: black;
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
 }
 
 svg {
@@ -266,7 +337,8 @@ footer .footer__citat {
   font-weight: bolder;
   font-style: italic;
 }
-footer h3, footer h4 {
+footer h3,
+footer h4 {
   text-align: end;
   padding: 1rem 0;
   font-size: 1.3rem;
@@ -354,7 +426,7 @@ footer .github__link {
     justify-content: center;
   }
 
-  .songsOrderedList {
+  .songs__ol {
     padding-left: 0;
     margin-left: 0;
   }
@@ -433,6 +505,32 @@ textarea {
   .nav__title h3 {
     font-size: 1.5rem;
   }
+
+  .song__container {
+    width: 80vw;
+    height: 300px;
+    margin: 1.5rem 0.8rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+  }
+  .song__container img {
+    height: 120px;
+  }
+  .song__container svg {
+    width: 120px;
+  }
+  .song__container .song__title {
+    color: black;
+    font-weight: 300;
+    font-size: 1.3rem;
+    padding-left: 1rem;
+    width: auto;
+    padding: 1.3rem 0.5rem;
+    font-size: 1.3rem;
+    text-align: center;
+    text-shadow: 0 0 5px white;
+  }
 }
 @media (max-width: 1168px) {
   body {
@@ -472,12 +570,12 @@ textarea {
     transition: 0.8s;
     width: 70vw;
     background: #4F5A80;
+    z-index: 1001;
   }
   .nav.expanded {
     justify-content: flex-start;
     position: fixed;
     right: 0;
-    z-index: 1001;
     border-right: none;
     transition: 0.5s;
   }
@@ -651,6 +749,11 @@ iframe {
     margin: 0.5rem 0;
   }
 }
+@media only screen and (max-width: 1600px) {
+  .nav a {
+    padding: 4px;
+  }
+}
 @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
   .nav {
     right: -600px;
@@ -674,6 +777,10 @@ iframe {
 
   .section__header {
     text-align: center;
+  }
+
+  .song__container {
+    width: 75vw;
   }
 }
 

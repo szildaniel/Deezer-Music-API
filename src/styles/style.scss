@@ -195,7 +195,6 @@ ul {
   font-weight: 300;
   margin-bottom: 3rem;
 }
-
 section,
 article {
   padding: 2rem;
@@ -217,7 +216,7 @@ article {
   }
 }
 .song__container {
-  // background: #ffaf3d;
+  background: #cacaca;
   width: 50vw;
   display: flex;
   justify-content: space-between;
@@ -225,13 +224,28 @@ article {
   border: 2px solid gray;
   box-shadow: 0 0 3px darkgray;
   height: 120px;
-  padding: 1rem 0;
   margin: 1rem 0;
   font-size: 1.2rem;
+  .song__title{
+    color: black;
+    font-weight: 300;
+    font-size: 1.3rem;
+    padding-left: 1rem;
+    width: 500px;
+  }
+  &.with__dividers > .song__title{
+    color: white;
+  }
+  img{
+    height: 100%;
+    width: auto;
+    line-height: 100%;
+    text-align: center;
+  }
 }
 
 .deezer {
-  padding-right: 2rem;
+  padding-right: 1rem;
   -webkit-transition: all .5s;
   transition: all .5s;
 }
