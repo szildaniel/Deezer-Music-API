@@ -11,7 +11,13 @@ export default function renderDividers(fragment) {
                                 </svg>`;
 
     for(let i=0; i<=5; i++){
-      div.innerHTML += `${sectionDividerUp}${sectionDividerDown}`;
+      if(i!==5){
+        div.innerHTML += `${sectionDividerUp}${sectionDividerDown}`;
+      }
+      else{
+        div.innerHTML += `${sectionDividerUp}`;
+
+      }
     }
     fragment.appendChild(div);
     div.classList.add('container');

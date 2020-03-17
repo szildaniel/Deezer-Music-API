@@ -189,7 +189,7 @@ var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
 module.hot.accept(reloadCSS);
-},{"./..\\img\\bg-desktop.png":[["bg-desktop.720daff5.png","img/bg-desktop.png"],"img/bg-desktop.png"],"./..\\img\\bg-header.jpg":[["bg-header.28ba781d.jpg","img/bg-header.jpg"],"img/bg-header.jpg"],"./..\\img\\bg-mobile.png":[["bg-mobile.55454341.png","img/bg-mobile.png"],"img/bg-mobile.png"],"_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"js/render/renderDividers.js":[function(require,module,exports) {
+},{"./..\\img\\bg-desktop.png":[["bg-desktop.720daff5.png","img/bg-desktop.png"],"img/bg-desktop.png"],"./..\\img\\bg-header.jpg":[["bg-header.28ba781d.jpg","img/bg-header.jpg"],"img/bg-header.jpg"],"./..\\img\\playlist.svg":[["playlist.7e8f8578.svg","img/playlist.svg"],"img/playlist.svg"],"./..\\img\\bg-mobile.png":[["bg-mobile.55454341.png","img/bg-mobile.png"],"img/bg-mobile.png"],"_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"js/render/renderDividers.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -203,7 +203,11 @@ function renderDividers(fragment) {
   var sectionDividerDown = "<svg id=\"curveDownColor\" xmlns=\"http://www.w3.org/2000/svg\" version=\"1.1\" width=\"100%\" height=\"100\" viewBox=\"0 0 100 100\" preserveAspectRatio=\"none\">\n                                     <path d=\"M0 0 C 50 100 80 100 100 0 Z\" />\n                                </svg>";
 
   for (var i = 0; i <= 5; i++) {
-    div.innerHTML += "".concat(sectionDividerUp).concat(sectionDividerDown);
+    if (i !== 5) {
+      div.innerHTML += "".concat(sectionDividerUp).concat(sectionDividerDown);
+    } else {
+      div.innerHTML += "".concat(sectionDividerUp);
+    }
   }
 
   fragment.appendChild(div);
@@ -295,7 +299,7 @@ exports.default = renderList;
 var renderElementsInsideLi = function renderElementsInsideLi(fragment) {
   var allLi = fragment.querySelectorAll('ol > li');
   allLi.forEach(function (li, i) {
-    var liElements = "\n                <div class=\"song__container\">\n                    <img class=\"cover".concat(i, "\" src=\"\" alt=\"album-cover\">\n                    <h3 class=\"song__title song__title").concat(i, "\">Loading data ...</h3>\n                    <div class=\"deezer deezer").concat(i, "\">\n                        <a href=\"\" target=\"_blank\" class=\"deezer__link link").concat(i, "\"><i class=\"fa fa-play play").concat(i, "\"></i>\n                            <svg id=\"svg2\" class=\"logo62\"\n                                xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 46.9 24.5\" width=\"100\" height=\"52\">\n                                <style> .st0 {fill: #b1e3fa} .st1 {fill: #f7bacf} .st2 {fill: #e7ee9f} .st3 {fill: #feea3a}\n                                 .st4 {fill: #fe9d7f} .st5 {fill: #4ec2f6} .st6 {fill: #ccdb38} .st7 {fill: #fe3f80} .st8 {fill: #fe3d02}\n                                </style>\n                                <path id=\"path59\" class=\"st0\" d=\"M38.3 13.9v-1h8.6v2h-8.6v-1zm0-3.2v-1h8.6v2h-8.6v-1zm0-3.2v-1h8.6v2h-8.6v-1zm0-3.3v-1h8.6v2.1h-8.6V4.2zm0-3.1V0h8.6v2.2h-8.6V1.1z\" />\n                                <path id=\"path57\" class=\"st1\" d=\"M19.1 13.9v-1h8.6v2h-8.6v-1zm0-3.2v-1h8.6v2h-8.6v-1zm0-3.2v-1h8.6v2h-8.6v-1zm0-3.3v-1h8.6v2.1h-8.6V4.2z\" />\n                                <path id=\"path55\" class=\"st2\" d=\"M28.7 13.9v-1h8.6v2h-8.6v-1zm0-3.2v-1h8.6v2h-8.6v-1z\" />\n                                <path id=\"path53\" class=\"st3\" d=\"M9.6 23.5v-1H18v2H9.6v-1zm0-3.3v-1H18v2H9.6v-1zm0-3.2v-1H18v2H9.6v-1z\" />\n                                <path id=\"path51\" class=\"st4\" d=\"M0 13.9v-1h8.4v2H0v-1zm0-3.2v-1h8.4v2H0v-1z\" />\n                                <path id=\"path49\" class=\"st5\" d=\"M38.4 23.5v-1h8.4v2h-8.4v-1zm0-3.3v-1h8.4v2h-8.4v-1zm0-3.2v-1h8.4v2h-8.4v-1z\" />\n                                <path id=\"path47\" class=\"st6\" d=\"M28.8 23.5v-1h8.4v2h-8.4v-1zm0-3.3v-1h8.4v2h-8.4v-1zm0-3.2v-1h8.4v2h-8.4v-1z\" />\n                                <path id=\"path45\" class=\"st7\" d=\"M19.2 23.5v-1h8.4v2h-8.4v-1zm0-3.3v-1h8.4v2h-8.4v-1zm0-3.2v-1h8.4v2h-8.4v-1z\" />\n                                <path id=\"path43\" class=\"st8\" d=\"M0 23.5v-1h8.4v2H0v-1zm0-3.3v-1h8.4v2H0v-1zM0 17v-1h8.4v2H0v-1z\" />\n                            </svg>\n                        </a>\n                    </div>\n                </div>");
+    var liElements = "\n                <div class=\"song__container\">\n                    <img class=\"cover".concat(i, "\" src=\"\" alt=\"album-cover\">\n                    <h3 class=\"song__title song__title").concat(i, "\">Loading data ... </h3>\n                    <div class=\"deezer deezer").concat(i, "\" >\n                    <span class=\"song__playlist song__playlist").concat(i, "\" data-index=\"").concat(i, "\"></span>\n                    <span class=\"song__playlist__info\" data-index=\"").concat(i, "\">Add to playlist</span>\n                        <a href=\"\" class=\"deezer__link link").concat(i, "\"><i class=\"fa fa-play play").concat(i, "\" data-index=\"").concat(i, "\"></i>\n                        <svg id=\"svg2\" class=\"svg").concat(i, "\" data-index=\"").concat(i, "\" \n                                xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 46.9 24.5\" width=\"100\" height=\"52\">\n                                <style> .st0 {fill: #b1e3fa} .st1 {fill: #f7bacf} .st2 {fill: #e7ee9f} .st3 {fill: #feea3a}\n                                 .st4 {fill: #fe9d7f} .st5 {fill: #4ec2f6} .st6 {fill: #ccdb38} .st7 {fill: #fe3f80} .st8 {fill: #fe3d02}\n                                </style>\n                                <path id=\"path59\" class=\"st0\" d=\"M38.3 13.9v-1h8.6v2h-8.6v-1zm0-3.2v-1h8.6v2h-8.6v-1zm0-3.2v-1h8.6v2h-8.6v-1zm0-3.3v-1h8.6v2.1h-8.6V4.2zm0-3.1V0h8.6v2.2h-8.6V1.1z\" />\n                                <path id=\"path57\" class=\"st1\" d=\"M19.1 13.9v-1h8.6v2h-8.6v-1zm0-3.2v-1h8.6v2h-8.6v-1zm0-3.2v-1h8.6v2h-8.6v-1zm0-3.3v-1h8.6v2.1h-8.6V4.2z\" />\n                                <path id=\"path55\" class=\"st2\" d=\"M28.7 13.9v-1h8.6v2h-8.6v-1zm0-3.2v-1h8.6v2h-8.6v-1z\" />\n                                <path id=\"path53\" class=\"st3\" d=\"M9.6 23.5v-1H18v2H9.6v-1zm0-3.3v-1H18v2H9.6v-1zm0-3.2v-1H18v2H9.6v-1z\" />\n                                <path id=\"path51\" class=\"st4\" d=\"M0 13.9v-1h8.4v2H0v-1zm0-3.2v-1h8.4v2H0v-1z\" />\n                                <path id=\"path49\" class=\"st5\" d=\"M38.4 23.5v-1h8.4v2h-8.4v-1zm0-3.3v-1h8.4v2h-8.4v-1zm0-3.2v-1h8.4v2h-8.4v-1z\" />\n                                <path id=\"path47\" class=\"st6\" d=\"M28.8 23.5v-1h8.4v2h-8.4v-1zm0-3.3v-1h8.4v2h-8.4v-1zm0-3.2v-1h8.4v2h-8.4v-1z\" />\n                                <path id=\"path45\" class=\"st7\" d=\"M19.2 23.5v-1h8.4v2h-8.4v-1zm0-3.3v-1h8.4v2h-8.4v-1zm0-3.2v-1h8.4v2h-8.4v-1z\" />\n                                <path id=\"path43\" class=\"st8\" d=\"M0 23.5v-1h8.4v2H0v-1zm0-3.3v-1h8.4v2H0v-1zM0 17v-1h8.4v2H0v-1z\" />\n                            </svg>\n                        </a>\n                    </div>\n                </div>");
     li.innerHTML = liElements;
   });
 };
@@ -354,17 +358,11 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.fetchData = fetchData;
+exports.myData = void 0;
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
-
-function initDeezerApi() {
-  DZ.init({
-    appId: "384884",
-    channelUrl: "https://szildaniel.github.io/music-API/"
-  });
-}
 
 function reduceData(_x) {
   return _reduceData.apply(this, arguments);
@@ -386,7 +384,7 @@ function _reduceData() {
               var _ref = _asyncToGenerator(
               /*#__PURE__*/
               regeneratorRuntime.mark(function _callee(song) {
-                var id, artist, title, link, cover, neededData;
+                var id, artist, title, cover, neededData;
                 return regeneratorRuntime.wrap(function _callee$(_context) {
                   while (1) {
                     switch (_context.prev = _context.next) {
@@ -407,25 +405,19 @@ function _reduceData() {
                       case 8:
                         title = _context.sent;
                         _context.next = 11;
-                        return song.link;
-
-                      case 11:
-                        link = _context.sent;
-                        _context.next = 14;
                         return song.album.cover;
 
-                      case 14:
+                      case 11:
                         cover = _context.sent;
                         neededData = {
                           id: id,
                           artist: artist,
                           title: title,
-                          link: link,
                           cover: cover
                         };
                         return _context.abrupt("return", neededData);
 
-                      case 17:
+                      case 14:
                       case "end":
                         return _context.stop();
                     }
@@ -442,9 +434,14 @@ function _reduceData() {
 
           case 4:
             reducedData = _context2.sent;
+            _context2.next = 7;
+            return reducedData;
+
+          case 7:
+            exports.myData = myData = _context2.sent;
             return _context2.abrupt("return", reducedData);
 
-          case 6:
+          case 9:
           case "end":
             return _context2.stop();
         }
@@ -494,6 +491,9 @@ function _fetchData() {
   }));
   return _fetchData.apply(this, arguments);
 }
+
+var myData;
+exports.myData = myData;
 },{}],"js/setData.js":[function(require,module,exports) {
 "use strict";
 
@@ -513,14 +513,16 @@ function setData() {
       var title = song.title,
           artist = song.artist,
           cover = song.cover,
-          link = song.link;
+          id = song.id;
       var currentHeader = document.querySelector(".song__title".concat(i));
       var currentImage = document.querySelector(".cover".concat(i));
-      var currentLink = document.querySelector(".link".concat(i));
+      var currentPlayIcon = document.querySelector(".play".concat(i));
+      var currentAddToPlaylistIcon = document.querySelector(".song__playlist".concat(i));
       currentHeader.innerHTML = "".concat(songIndex + 1, ". ").concat(artist, " - ").concat(title);
       currentImage.setAttribute('src', cover);
       currentImage.setAttribute('alt', title);
-      currentLink.setAttribute('href', link);
+      currentPlayIcon.setAttribute('data-id', id);
+      currentAddToPlaylistIcon.setAttribute('data-id', id);
     });
   });
 }
@@ -542,6 +544,7 @@ exports.toggleNav = toggleNav;
 var sidePanel = document.getElementById("mySidePanel");
 var openBtn = document.querySelector(".nav__openBtn");
 var main = document.querySelector("main");
+var resultSection = document.querySelector('.section--blue');
 
 function openNav() {
   sidePanel.style.left = "0";
@@ -559,6 +562,7 @@ function closeNav() {
 
 function toggleMarginToMain() {
   main.classList.toggle('navExpanded');
+  resultSection.classList.toggle('navExpanded');
 }
 
 function toggleNav() {
@@ -1139,6 +1143,384 @@ function setCurrentClassToNavLinks() {
 }
 
 window.addEventListener('scroll', setCurrentClassToNavLinks, 250);
+},{}],"js/playerActions/initPlayer.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.initPlayer = initPlayer;
+
+function initPlayer() {
+  var isMobile = false;
+
+  if (window.matchMedia("only screen and (max-width: 760px)").matches) {
+    isMobile = true;
+  }
+
+  DZ.init({
+    appId: "384884",
+    channelUrl: "https://szildaniel.github.io/music-API/",
+    player: {
+      container: 'player',
+      playlist: true,
+      format: isMobile ? 'classic' : 'square',
+      width: isMobile ? window.innerWidth : 200,
+      height: isMobile ? 90 : 200,
+      autoplay: false,
+      layout: isMobile ? 'light' : 'dark'
+    }
+  });
+}
+},{}],"js/playerActions/playerHelpers.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.isPlaying = isPlaying;
+exports.isLoaded = isLoaded;
+
+function isPlaying() {
+  return DZ.player.isPlaying();
+}
+
+function isLoaded() {
+  return DZ.player.loaded;
+}
+},{}],"js/playerActions/addTrackToPlaylist.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.addTrackToPlaylist = addTrackToPlaylist;
+
+var _listenForPlay = require("./listenForPlay");
+
+function addTrackToPlaylist(id, songName, hideInfo, showInfo) {
+  var playerInfo = document.querySelector('.player__info');
+  DZ.player.addToQueue([id]);
+  showInfo();
+  playerInfo.innerHTML = "<span>&#x2715;</span>You added to playlist <span class=\"title__info\">".concat(songName, "</span>");
+  (0, _listenForPlay.addListenerToXMark)();
+  setTimeout(hideInfo, 3500);
+}
+},{"./listenForPlay":"js/playerActions/listenForPlay.js"}],"js/playerActions/listenForPlay.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.listenForPlay = listenForPlay;
+exports.playSong = playSong;
+exports.addListenerToXMark = addListenerToXMark;
+exports.hidePlayerInfo = hidePlayerInfo;
+exports.showPlayerInfo = showPlayerInfo;
+
+var _getData = require("../getData");
+
+var _initPlayer = require("./initPlayer");
+
+var _playerHelpers = require("./playerHelpers");
+
+var _addTrackToPlaylist = require("./addTrackToPlaylist");
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+var playerInfo = document.querySelector('.player__info');
+
+function listenForPlay() {
+  return _listenForPlay.apply(this, arguments);
+}
+
+function _listenForPlay() {
+  _listenForPlay = _asyncToGenerator(
+  /*#__PURE__*/
+  regeneratorRuntime.mark(function _callee() {
+    var container;
+    return regeneratorRuntime.wrap(function _callee$(_context) {
+      while (1) {
+        switch (_context.prev = _context.next) {
+          case 0:
+            container = document.querySelector('.container');
+            (0, _getData.fetchData)().then(function (songsArr) {
+              return playSong(songsArr, container);
+            });
+
+          case 2:
+          case "end":
+            return _context.stop();
+        }
+      }
+    }, _callee);
+  }));
+  return _listenForPlay.apply(this, arguments);
+}
+
+function playSong(songsArr, container) {
+  container.addEventListener('click', function (e) {
+    e.preventDefault();
+    var addPlaylistElement = e.target.classList.contains('song__playlist');
+    var playSongElement = e.target.classList.contains('fa-play');
+
+    if (playSongElement) {
+      var currentSongId = e.target.dataset.id;
+
+      if (!(0, _playerHelpers.isLoaded)()) {
+        (0, _initPlayer.initPlayer)();
+        DZ.ready(function () {
+          DZ.player.playTracks([currentSongId], false);
+          addListenerToXMark();
+          _playerHelpers.isPlaying ? showPlayerInfo() : hidePlayerInfo();
+        });
+      } else {
+        DZ.player.playTracks([currentSongId]);
+        _playerHelpers.isPlaying ? hidePlayerInfo() : showPlayerInfo();
+      }
+    } else if (addPlaylistElement) {
+      var _currentSongId = e.target.dataset.id;
+      var currentSongIndex = songsArr.findIndex(function (el) {
+        return el.id === parseInt(_currentSongId);
+      });
+      var _songsArr$currentSong = songsArr[currentSongIndex],
+          title = _songsArr$currentSong.title,
+          artist = _songsArr$currentSong.artist,
+          id = _songsArr$currentSong.id;
+      var name = "".concat(artist, " - ").concat(title);
+      (0, _playerHelpers.isLoaded)() ? (0, _addTrackToPlaylist.addTrackToPlaylist)(id, name, hidePlayerInfo, showPlayerInfo) : '';
+    } else return;
+  });
+}
+
+;
+
+function addListenerToXMark() {
+  var xMark = document.querySelector('.player__info span');
+  xMark.addEventListener('click', hidePlayerInfo);
+}
+
+function removeListenerToXMark() {
+  var xMark = document.querySelector('.player__info span');
+  xMark.removeEventListener('click', hidePlayerInfo);
+}
+
+function hidePlayerInfo() {
+  playerInfo.classList.remove('show');
+  removeListenerToXMark();
+}
+
+function showPlayerInfo() {
+  playerInfo.classList.add('show');
+}
+},{"../getData":"js/getData.js","./initPlayer":"js/playerActions/initPlayer.js","./playerHelpers":"js/playerActions/playerHelpers.js","./addTrackToPlaylist":"js/playerActions/addTrackToPlaylist.js"}],"js/animations/listenForPlayListHover.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.listenForPlayListHover = listenForPlayListHover;
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+function listenForPlayListHover() {
+  return _listenForPlayListHover.apply(this, arguments);
+}
+
+function _listenForPlayListHover() {
+  _listenForPlayListHover = _asyncToGenerator(
+  /*#__PURE__*/
+  regeneratorRuntime.mark(function _callee() {
+    var container;
+    return regeneratorRuntime.wrap(function _callee$(_context) {
+      while (1) {
+        switch (_context.prev = _context.next) {
+          case 0:
+            container = document.querySelector('.container');
+            container.addEventListener('mouseover', function (e) {
+              e.preventDefault();
+
+              if (e.target.classList.contains('song__playlist')) {
+                var elIndex = e.target.dataset.index;
+                var el = document.querySelector(".song__playlist__info[data-index=\"".concat(elIndex, "\"]"));
+                toggleInfo(el);
+              } else return;
+            });
+            container.addEventListener('mouseout', function (e) {
+              e.preventDefault();
+
+              if (e.target.classList.contains('song__playlist')) {
+                var elIndex = e.target.dataset.index;
+                var el = document.querySelector(".song__playlist__info[data-index=\"".concat(elIndex, "\"]"));
+                toggleInfo(el);
+              } else return;
+            });
+
+          case 3:
+          case "end":
+            return _context.stop();
+        }
+      }
+    }, _callee);
+  }));
+  return _listenForPlayListHover.apply(this, arguments);
+}
+
+function toggleInfo(element) {
+  element.classList.toggle('show');
+}
+},{}],"js/search/searchCore.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.listenForSearch = listenForSearch;
+
+var _debounce = _interopRequireDefault(require("../helpers/debounce"));
+
+var _getData = require("../getData");
+
+var _listenForPlay = require("../playerActions/listenForPlay");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+var resultSection = document.querySelector('.result__section');
+var input = document.getElementById('site-search');
+var searchedText = '';
+var findedSongs = [];
+
+var getSearchText = function getSearchText(e) {
+  var container = document.querySelector('.container');
+  resultSection.innerHTML = '';
+  searchedText = e.target.value.toLowerCase();
+  e.target.value === '' ? showDefaultSongs(container) : getResultOfSearch();
+};
+
+function displayResultOnPage() {
+  if (findedSongs.length === 0) {
+    wrongSearch();
+  } else createDocumentFragment(findedSongs);
+}
+
+function getResultOfSearch() {
+  return _getResultOfSearch.apply(this, arguments);
+}
+
+function _getResultOfSearch() {
+  _getResultOfSearch = _asyncToGenerator(
+  /*#__PURE__*/
+  regeneratorRuntime.mark(function _callee() {
+    var container;
+    return regeneratorRuntime.wrap(function _callee$(_context) {
+      while (1) {
+        switch (_context.prev = _context.next) {
+          case 0:
+            container = document.querySelector('.container');
+            _context.next = 3;
+            return _getData.myData.filter(filterSongs(searchedText));
+
+          case 3:
+            findedSongs = _context.sent;
+            hideDefaultSongs(container);
+            showResultContainer(resultSection);
+            displayResultOnPage();
+
+          case 7:
+          case "end":
+            return _context.stop();
+        }
+      }
+    }, _callee);
+  }));
+  return _getResultOfSearch.apply(this, arguments);
+}
+
+var hideDefaultSongs = function hideDefaultSongs(container) {
+  return container.style.display = 'none';
+};
+
+var showDefaultSongs = function showDefaultSongs(container) {
+  return container.style.display = 'block';
+};
+
+var showResultContainer = function showResultContainer(result) {
+  return result.style.opacity = "1";
+};
+
+var hideResultContainer = function hideResultContainer(result) {
+  return result.style.opacity = "0";
+};
+
+function createDocumentFragment(result) {
+  var fragment = document.createDocumentFragment();
+  var newDiv = document.createElement('div');
+  newDiv.classList.add('.resultt');
+  var newH = document.createElement('h3');
+  newH.classList.add('section__header');
+  newH.innerHTML = "That's list of songs that match to your phrase - <em>\"".concat(searchedText, "\"</em>: ");
+  newDiv.appendChild(newH);
+  var newOl = document.createElement('ol');
+  newOl.classList.add('.songs__ol');
+  newDiv.appendChild(newOl);
+  result.forEach(function (song) {
+    var id = song.id,
+        title = song.title,
+        artist = song.artist,
+        cover = song.cover;
+    var newLi = document.createElement('li');
+    newLi.innerHTML = "\n            <div class=\"song__container\">\n                <img class=\"cover\" src=\"".concat(cover, "\" alt=\"").concat(title, "\" />\n                <h3 class=\"song__title\">").concat(artist, " - ").concat(title, "</h3>\n                <div class=\"deezer\">\n                    <span class=\"song__playlist\" data-id=\"").concat(id, "\"></span>\n                    <span class=\"song__playlist__info\" data-info-id=\"").concat(id, "\">Add to playlist</span>\n                    <a href=\"\" class=\"deezer__link\"><i class=\"fa fa-play\" data-id=\"").concat(id, "\"></i>\n                        <svg id=\"svg2\" class=\"svg\" data-id=\"").concat(id, "\" \n                                xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 46.9 24.5\" width=\"100\" height=\"52\">\n                                <style> .st0 {fill: #b1e3fa} .st1 {fill: #f7bacf} .st2 {fill: #e7ee9f} .st3 {fill: #feea3a}\n                                 .st4 {fill: #fe9d7f} .st5 {fill: #4ec2f6} .st6 {fill: #ccdb38} .st7 {fill: #fe3f80} .st8 {fill: #fe3d02}\n                                </style>\n                                <path id=\"path59\" class=\"st0\" d=\"M38.3 13.9v-1h8.6v2h-8.6v-1zm0-3.2v-1h8.6v2h-8.6v-1zm0-3.2v-1h8.6v2h-8.6v-1zm0-3.3v-1h8.6v2.1h-8.6V4.2zm0-3.1V0h8.6v2.2h-8.6V1.1z\" />\n                                <path id=\"path57\" class=\"st1\" d=\"M19.1 13.9v-1h8.6v2h-8.6v-1zm0-3.2v-1h8.6v2h-8.6v-1zm0-3.2v-1h8.6v2h-8.6v-1zm0-3.3v-1h8.6v2.1h-8.6V4.2z\" />\n                                <path id=\"path55\" class=\"st2\" d=\"M28.7 13.9v-1h8.6v2h-8.6v-1zm0-3.2v-1h8.6v2h-8.6v-1z\" />\n                                <path id=\"path53\" class=\"st3\" d=\"M9.6 23.5v-1H18v2H9.6v-1zm0-3.3v-1H18v2H9.6v-1zm0-3.2v-1H18v2H9.6v-1z\" />\n                                <path id=\"path51\" class=\"st4\" d=\"M0 13.9v-1h8.4v2H0v-1zm0-3.2v-1h8.4v2H0v-1z\" />\n                                <path id=\"path49\" class=\"st5\" d=\"M38.4 23.5v-1h8.4v2h-8.4v-1zm0-3.3v-1h8.4v2h-8.4v-1zm0-3.2v-1h8.4v2h-8.4v-1z\" />\n                                <path id=\"path47\" class=\"st6\" d=\"M28.8 23.5v-1h8.4v2h-8.4v-1zm0-3.3v-1h8.4v2h-8.4v-1zm0-3.2v-1h8.4v2h-8.4v-1z\" />\n                                <path id=\"path45\" class=\"st7\" d=\"M19.2 23.5v-1h8.4v2h-8.4v-1zm0-3.3v-1h8.4v2h-8.4v-1zm0-3.2v-1h8.4v2h-8.4v-1z\" />\n                                <path id=\"path43\" class=\"st8\" d=\"M0 23.5v-1h8.4v2H0v-1zm0-3.3v-1h8.4v2H0v-1zM0 17v-1h8.4v2H0v-1z\" />\n                            </svg>\n                        </a>\n                </div>\n            </div>    \n        ");
+    newOl.appendChild(newLi);
+  });
+  fragment.appendChild(newDiv);
+  resultSection.appendChild(fragment);
+  (0, _listenForPlay.playSong)(_getData.myData, resultSection);
+}
+
+function wrongSearch() {
+  return resultSection.innerHTML = "<h3>The given phrase -  <b>".concat(searchedText, "</b> is not found. </h3>\n    <p>Please:</p>\n    <ul>\n        <li>Check spelling of your phrase. </li>\n        <li>Try to use another artist name or title.</li>\n    </ul>");
+}
+
+function filterSongs(searchedText) {
+  return function (song) {
+    return song.artist.toLowerCase().includes(searchedText) || song.title.toLowerCase().includes(searchedText);
+  };
+}
+
+function listenForSearch() {
+  input.addEventListener('input', debouncedGetSearchText);
+}
+
+var debouncedGetSearchText = (0, _debounce.default)(getSearchText, 450);
+},{"../helpers/debounce":"js/helpers/debounce.js","../getData":"js/getData.js","../playerActions/listenForPlay":"js/playerActions/listenForPlay.js"}],"js/animations/playInfo.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.insertPlayInfoSpan = insertPlayInfoSpan;
+
+function insertPlayInfoSpan() {
+  var firstSvg = document.querySelector('.svg0');
+  var newSpan = document.createElement('span');
+  newSpan.classList.add('play__info');
+  newSpan.textContent = 'Click Play';
+  var parentEl = document.querySelector('.link0');
+  parentEl.insertBefore(newSpan, firstSvg);
+  var infoSpan = document.querySelector('.play__info');
+  infoSpan.classList.toggle('show');
+  var hideInfo = setTimeout(function () {
+    infoSpan.classList.toggle('show');
+  }, 12000);
+}
 },{}],"js/index.js":[function(require,module,exports) {
 "use strict";
 
@@ -1160,6 +1542,14 @@ var _setResponsiveNavHeight = require("./helpers/setResponsiveNavHeight");
 
 var _setCurrentClassToNavLinks = require("./helpers/setCurrentClassToNavLinks");
 
+var _listenForPlay = require("./playerActions/listenForPlay");
+
+var _listenForPlayListHover = require("./animations/listenForPlayListHover");
+
+var _searchCore = require("./search/searchCore");
+
+var _playInfo = require("./animations/playInfo");
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 (0, _render.default)();
@@ -1172,7 +1562,11 @@ _smoothscrollPolyfill.default.polyfill();
 (0, _hamburgerAnimation.hamburgerAnimation)();
 (0, _setResponsiveNavHeight.setResponsiveNavHeight)();
 (0, _setCurrentClassToNavLinks.setCurrentClassToNavLinks)();
-},{"../styles/style.scss":"styles/style.scss","./render/render":"js/render/render.js","./setData":"js/setData.js","./helpers/nav":"js/helpers/nav.js","smoothscroll-polyfill":"../node_modules/smoothscroll-polyfill/dist/smoothscroll.js","./animations/hamburgerAnimation":"js/animations/hamburgerAnimation.js","./animations/enjoyBtnAnimations":"js/animations/enjoyBtnAnimations.js","./helpers/setResponsiveNavHeight":"js/helpers/setResponsiveNavHeight.js","./helpers/setCurrentClassToNavLinks":"js/helpers/setCurrentClassToNavLinks.js"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+(0, _listenForPlay.listenForPlay)();
+(0, _listenForPlayListHover.listenForPlayListHover)();
+(0, _searchCore.listenForSearch)();
+(0, _playInfo.insertPlayInfoSpan)();
+},{"../styles/style.scss":"styles/style.scss","./render/render":"js/render/render.js","./setData":"js/setData.js","./helpers/nav":"js/helpers/nav.js","smoothscroll-polyfill":"../node_modules/smoothscroll-polyfill/dist/smoothscroll.js","./animations/hamburgerAnimation":"js/animations/hamburgerAnimation.js","./animations/enjoyBtnAnimations":"js/animations/enjoyBtnAnimations.js","./helpers/setResponsiveNavHeight":"js/helpers/setResponsiveNavHeight.js","./helpers/setCurrentClassToNavLinks":"js/helpers/setCurrentClassToNavLinks.js","./playerActions/listenForPlay":"js/playerActions/listenForPlay.js","./animations/listenForPlayListHover":"js/animations/listenForPlayListHover.js","./search/searchCore":"js/search/searchCore.js","./animations/playInfo":"js/animations/playInfo.js"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -1200,7 +1594,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "49349" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "58029" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

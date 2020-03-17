@@ -21,7 +21,15 @@
         </a>
       </div>
     </header>
-
+    <article class="my__player">
+      <div id="dz-root"></div>
+      <div id="player"></div>
+      <div class="player__info">
+        <p><span>&#x2715;</span>Browser blocked autoplay please click play icon in the middle of player to start playing.</p>
+        <p class="policy"><a href="https://developers.google.com/web/updates/2017/09/autoplay-policy-changes" target="_blank" rel="noopener noreferrer">Click </a> 
+          here to learn more about autoplay policy.</p>
+      </div>
+    </article>
     <nav id="mySidePanel" class="nav">
 
       <button class="nav__hamburger">
@@ -35,7 +43,7 @@
         </h3>
         <div class="nav__search">
             <label for="site-search">Search song or artist:</label>
-            <input type="search" id="site-search" name="q" aria-label="Search through site content">
+            <input type="search" id="site-search" name="q" placeholder="Search" aria-label="Search through site content">
             <p class="nav__search--p">or browse by year:</p>
         </div>
         
@@ -58,10 +66,11 @@
     <button class="nav__openBtn">&raquo;</button>
 
     <main></main>
-
+ 
     <div class="section--blue">
-      <div id="dz-root"></div>
+      <section class="result__section">
 
+      </section>
       <svg class="svg__clouds" xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100" viewBox="0 0 100 100" preserveAspectRatio="none">
             <path d="M-5 100 Q 0 20 5 100 Z M0 100 Q 5 0 10 100 M5 100 Q 10 30 15 100 M10 100 Q 15 10 20 100
             M15 100 Q 20 30 25 100 M20 100 Q 25 -10 30 100 M25 100 Q 30 10 35 100 M30 100 Q 35 30 40 100 M35 100 Q 40 10 45 100 M40 100 Q 45 50 50 100

@@ -14,11 +14,11 @@ body {
   background: url("/bg-desktop.720daff5.png");
 }
 
-main {
+main, .section--blue {
   transition: margin-left 0.4s cubic-bezier(0.1, 0.58, 0.33, 0.83);
   margin-left: 0;
 }
-main.navExpanded {
+main.navExpanded, .section--blue.navExpanded {
   transition: margin-left 0.7s cubic-bezier(0.1, 0.58, 0.33, 0.83);
   margin-left: 300px;
 }
@@ -128,10 +128,15 @@ ul {
   display: inline-block;
   height: 25px;
   font-size: 0.9rem;
+  font-family: Ubuntu Condensed;
   transition: 0.1s;
   border-radius: 8px;
   border: none;
   box-shadow: 0 0 2px black;
+  padding-left: 5px;
+}
+.nav__search input::placeholder {
+  text-align: center;
 }
 .nav__search input:hover {
   box-shadow: 0 0 5px black;
@@ -245,6 +250,7 @@ article.with__dividers .section__header {
   height: 120px;
   margin: 1rem 0;
   font-size: 1.2rem;
+  position: relative;
 }
 .song__container .song__title {
   color: black;
@@ -253,7 +259,7 @@ article.with__dividers .section__header {
   padding-left: 1rem;
   width: 500px;
 }
-.song__container.with__dividers > .song__title {
+.song__container.with__dividers > .song__title, .result__section .song__container.with__dividers > .song__title {
   color: white;
 }
 .song__container img {
@@ -281,6 +287,21 @@ article.with__dividers .section__header {
   align-items: center;
   color: darkgreen;
   text-decoration: none;
+  cursor: default;
+}
+.deezer__link .fa-play {
+  cursor: pointer;
+}
+
+.song__playlist {
+  background: url("/playlist.7e8f8578.svg") no-repeat;
+  background-size: contain;
+  width: 25px;
+  height: 30px;
+  position: absolute;
+  left: 123px;
+  top: 53px;
+  cursor: pointer;
 }
 
 #svg2 {
@@ -314,6 +335,134 @@ svg {
 
 .section--blue {
   background: #3498db;
+}
+
+.my__player {
+  width: 200px;
+  height: 200px;
+  position: sticky;
+  left: 85%;
+  top: 50%;
+  transform: translateY(-50%);
+  background: transparent;
+  padding: 0;
+}
+
+.player__info {
+  box-sizing: border-box;
+  width: 200px;
+  background: white;
+  padding: 7px 10px;
+  color: black;
+  border: 2px solid black;
+  font-size: 1.1rem;
+  text-align: left;
+  opacity: 0;
+  transition: opacity 1s ease-in;
+  position: relative;
+}
+.player__info.show {
+  opacity: 1;
+}
+.player__info span:first-child {
+  position: absolute;
+  right: 8px;
+  top: 3px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: bold;
+}
+.player__info a {
+  color: #3498db;
+  text-decoration: none;
+  transition: 0.2s;
+}
+.player__info a:hover {
+  text-decoration: underline;
+  transition: 0.2s;
+}
+.player__info a:active {
+  color: black;
+}
+.player__info a:visited {
+  color: #075588;
+}
+
+.result__section {
+  background: #3498db;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  opacity: 0;
+  transition: 0.3s;
+}
+.result__section h3 {
+  text-shadow: 2px 2px 3px black;
+  color: white;
+  margin-top: 0;
+}
+.result__section .song__container {
+  background: #ffaf3d;
+}
+.result__section .song__title {
+  text-shadow: none;
+}
+.result__section ol {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.policy {
+  padding-top: 7px;
+}
+
+.song__playlist__info {
+  width: 120px;
+  height: 30px;
+  border: 2px solid #3e3e3e;
+  display: flex;
+  position: absolute;
+  left: 145px;
+  top: 76px;
+  border-radius: 10%;
+  font-family: Ubuntu Condensed;
+  justify-content: center;
+  align-items: center;
+  background: white;
+  transition: 0.2s;
+  opacity: 0;
+}
+.song__playlist__info.show {
+  opacity: 1;
+}
+
+.play__info {
+  color: black;
+  width: 120px;
+  height: 30px;
+  border: 2px solid #3e3e3e;
+  display: flex;
+  position: absolute;
+  top: 43px;
+  right: 90px;
+  border-radius: 10%;
+  font-family: Ubuntu Condensed;
+  justify-content: center;
+  align-items: center;
+  background: white;
+  transition: 0.2s;
+  opacity: 0;
+}
+.play__info.show {
+  transform: rotate(-15deg);
+  opacity: 1;
+  transition: opacity 0.7s ease-out;
+}
+
+.title__info {
+  color: #393074;
 }
 
 footer {
@@ -463,7 +612,7 @@ footer .github__link {
     padding: 0.4rem 1rem;
   }
 
-  .song__title {
+  .song__title, .result__section .song__title {
     padding: 1.3rem 0.5rem;
     font-size: 1.3rem;
   }
@@ -483,6 +632,19 @@ footer .github__link {
     padding-bottom: 1.2rem;
   }
 
+  .my__player {
+    width: auto;
+    height: auto;
+    left: 0;
+    top: 0;
+    transform: translateY(0);
+    z-index: 30;
+  }
+
+  .play__info {
+    top: 210px;
+  }
+
   .search-div input {
     font-size: 1.1rem;
     width: 80%;
@@ -496,6 +658,19 @@ textarea {
 
   .nav__title h3 {
     font-size: 1.5rem;
+  }
+
+  .player__info {
+    width: 100vw;
+    font-family: Ubuntu Condensed;
+    padding-right: 20px;
+    border: 1px solid #c7c5c5;
+  }
+
+  .song__playlist {
+    position: absolute;
+    left: 60px;
+    top: 10px;
   }
 
   .song__container {
@@ -592,6 +767,11 @@ textarea {
     justify-content: space-between;
   }
 
+  .song__playlist__info {
+    left: 6px;
+    top: -30px;
+  }
+
   .nav__closeBtn {
     display: none;
     transform: translateX(-250px);
@@ -599,8 +779,7 @@ textarea {
 
   .nav__hamburger {
     position: fixed;
-    top: 0.3rem;
-    right: 0.6rem;
+    right: 5px;
     z-index: 30;
     -webkit-transition: 0.8s;
     transition: 0.8s;
@@ -610,9 +789,14 @@ textarea {
     border: none;
     padding: 0;
     cursor: pointer;
+    transition: 0.2s;
   }
   .nav__hamburger:focus {
     outline: none;
+  }
+  .nav__hamburger.isPlaying {
+    top: 82px;
+    transition: 0.2s;
   }
 
   .result__wrapper {

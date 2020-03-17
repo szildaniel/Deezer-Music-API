@@ -1,6 +1,7 @@
 const sidePanel = document.getElementById("mySidePanel");
 const openBtn = document.querySelector(".nav__openBtn");
 const main = document.querySelector("main");
+const resultSection = document.querySelector('.section--blue');
 
 function openNav() {
   sidePanel.style.left = "0";
@@ -21,6 +22,7 @@ function closeNav() {
 
 function toggleMarginToMain(){
   main.classList.toggle('navExpanded');
+  resultSection.classList.toggle('navExpanded');
 }
 
 export function toggleNav() {

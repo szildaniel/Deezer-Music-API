@@ -1,10 +1,3 @@
-function initDeezerApi() {
-  DZ.init({
-    appId: "384884",
-    channelUrl: "https://szildaniel.github.io/music-API/"
-  });
-}
-
 async function reduceData(fetchedData) {
 
   const fetchedTracks = fetchedData.tracks.data;
@@ -13,15 +6,14 @@ async function reduceData(fetchedData) {
     const id = await song.id;
     const artist = await song.artist.name;
     const title = await song.title_short;
-    const link = await song.link;
     const cover = await song.album.cover;
 
-    const neededData = { id, artist, title, link, cover };
+    const neededData = { id, artist, title, cover };
     return neededData;
   });
 
   const reducedData = await Promise.all(arrPromises);
-
+  myData = await reducedData;
   return reducedData;
 }
 
@@ -40,3 +32,7 @@ export async function fetchData() {
   let fetchedData = await response.json();
   return reduceData(fetchedData);
 }
+
+export let myData;
+
+

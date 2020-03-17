@@ -108,7 +108,17 @@
       padding-bottom: 1.2rem;
     }
   }
-
+  .my__player{
+    width: auto;
+    height: auto;
+    left: 0;
+    top: 0;
+    transform: translateY(0);
+    z-index: 30;
+  }
+  .play__info{
+    top: 210px;
+  }
   .search-div input {
     font-size: 1.1rem;
     width: 80%;
@@ -121,7 +131,17 @@
   .nav__title h3 {
     font-size: 1.5rem;
   }
-
+  .player__info{
+    width: 100vw;
+    font-family: Ubuntu Condensed;
+    padding-right: 20px;
+    border: 1px solid #c7c5c5;
+  }
+  .song__playlist{
+    position: absolute;
+    left: 60px;
+    top: 10px;
+  }
   .song__container {
     width: 80vw;
     height: 300px;
@@ -212,15 +232,17 @@
       justify-content: space-between;
     }
   }
-
+  .song__playlist__info{
+    left: 6px;
+    top: -30px;
+  }
   .nav__closeBtn {
     display: none;
     transform: translateX(-250px);
   }
   .nav__hamburger {
     position: fixed;
-    top: 0.3rem;
-    right: 0.6rem;
+    right: 5px;
     z-index: 30;
     -webkit-transition: 0.8s;
     transition: 0.8s;
@@ -230,8 +252,13 @@
     border: none;
     padding: 0;
     cursor: pointer;
+    transition: .2s;
     &:focus {
       outline: none;
+    }
+    &.isPlaying{
+      top: 82px;
+      transition: .2s;
     }
   }
 

@@ -5,10 +5,12 @@ const renderElementsInsideLi = (fragment) => {
         const liElements = `
                 <div class="song__container">
                     <img class="cover${i}" src="" alt="album-cover">
-                    <h3 class="song__title song__title${i}">Loading data ...</h3>
-                    <div class="deezer deezer${i}">
-                        <a href="" target="_blank" class="deezer__link link${i}"><i class="fa fa-play play${i}"></i>
-                            <svg id="svg2" class="logo62"
+                    <h3 class="song__title song__title${i}">Loading data ... </h3>
+                    <div class="deezer deezer${i}" >
+                    <span class="song__playlist song__playlist${i}" data-index="${i}"></span>
+                    <span class="song__playlist__info" data-index="${i}">Add to playlist</span>
+                        <a href="" class="deezer__link link${i}"><i class="fa fa-play play${i}" data-index="${i}"></i>
+                        <svg id="svg2" class="svg${i}" data-index="${i}" 
                                 xmlns="http://www.w3.org/2000/svg" viewBox="0 0 46.9 24.5" width="100" height="52">
                                 <style> .st0 {fill: #b1e3fa} .st1 {fill: #f7bacf} .st2 {fill: #e7ee9f} .st3 {fill: #feea3a}
                                  .st4 {fill: #fe9d7f} .st5 {fill: #4ec2f6} .st6 {fill: #ccdb38} .st7 {fill: #fe3f80} .st8 {fill: #fe3d02}
