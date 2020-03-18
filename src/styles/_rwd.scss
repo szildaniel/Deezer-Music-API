@@ -123,6 +123,23 @@
     font-size: 1.1rem;
     width: 80%;
   }
+  .result__header{
+    font-weight: 300;
+    text-align: center;
+    font-size: 1.3rem;
+    color: white;
+    text-shadow: 1px 1px 3px gray;
+  }
+  .result__div{
+    padding: 0.5rem 1rem;
+    background: #cacaca;
+    box-shadow: 2px 2px 3px black;
+    width: 80%;
+    h3{
+    padding: 1.5rem 1rem;
+    font-size: 1.3rem;
+    }
+  }
   input[type="text"],
   input[type="number"],
   textarea {
@@ -140,12 +157,13 @@
   .song__playlist{
     position: absolute;
     left: 60px;
-    top: 10px;
+    top: 20px;
   }
   .song__container {
     width: 80vw;
     height: 300px;
     margin: 1.5rem 0.8rem;
+    padding: .7rem 0;
     display: flex;
     flex-direction: column;
     justify-content: space-around;

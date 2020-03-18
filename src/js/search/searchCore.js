@@ -1,8 +1,8 @@
 import debounce from '../helpers/debounce';
 import { myData } from '../getData';
-
-import {playSong} from '../playerActions/listenForPlay';
-
+import { playSong } from '../playerActions/listenForPlay';
+import { wrongSearch, searchAgain } from './wrongSearch';
+import { addSvgDivider } from './addSvg';
 
 const resultSection = document.querySelector('.result__section');
 const input = document.getElementById('site-search')
@@ -20,7 +20,9 @@ const getSearchText = e => {
 
 function displayResultOnPage(){
     if(findedSongs.length === 0) {
-        wrongSearch()
+        wrongSearch(resultSection, searchedText);
+        addSvgDivider(resultSection);
+        searchAgain(input);
     }
     else createDocumentFragment(findedSongs);
 }
@@ -28,19 +30,17 @@ function displayResultOnPage(){
 async function getResultOfSearch(){
     const container = document.querySelector('.container');
     
-
     findedSongs = await myData.filter(filterSongs(searchedText)) 
     hideDefaultSongs(container);
     showResultContainer(resultSection);
     displayResultOnPage();
 }
 
-
 const hideDefaultSongs = container => container.style.display = 'none';
-const showDefaultSongs = container => container.style.display = 'block';
+export const showDefaultSongs = container => container.style.display = 'block';
 
 const showResultContainer = result => result.style.opacity = "1";
-const hideResultContainer = result => result.style.opacity = "0";
+export const hideResultContainer = result => result.style.opacity = "0";
 
 function createDocumentFragment(result){
     const fragment = document.createDocumentFragment();
@@ -49,7 +49,7 @@ function createDocumentFragment(result){
     newDiv.classList.add('.resultt');
 
     const newH = document.createElement('h3');
-    newH.classList.add('section__header');
+    newH.classList.add('result__header');
     newH.innerHTML = `That's list of songs that match to your phrase - <em>"${searchedText}"</em>: `;
     newDiv.appendChild(newH);
 
@@ -93,17 +93,8 @@ function createDocumentFragment(result){
     })
     fragment.appendChild(newDiv);
     resultSection.appendChild(fragment);
+    addSvgDivider(resultSection);
     playSong(myData, resultSection);
-}
-
-
-function wrongSearch(){
-    return resultSection.innerHTML = `<h3>The given phrase -  <b>${searchedText}</b> is not found. </h3>
-    <p>Please:</p>
-    <ul>
-        <li>Check spelling of your phrase. </li>
-        <li>Try to use another artist name or title.</li>
-    </ul>`;
 }
 
 function filterSongs(searchedText){
@@ -112,7 +103,6 @@ function filterSongs(searchedText){
                 || song.title.toLowerCase().includes(searchedText))
     };
 }
-
 
 export function listenForSearch(){
     input.addEventListener('input', debouncedGetSearchText);

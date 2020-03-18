@@ -1373,6 +1373,51 @@ function _listenForPlayListHover() {
 function toggleInfo(element) {
   element.classList.toggle('show');
 }
+},{}],"js/search/wrongSearch.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.wrongSearch = wrongSearch;
+exports.searchAgain = searchAgain;
+
+var _searchCore = require("./searchCore");
+
+function wrongSearch(resultSection, searchedText) {
+  return resultSection.innerHTML = "<div class=\"result__div\">\n                                        <h3>The given phrase <em>\"".concat(searchedText, "\"</em> is not found. </h3>\n                                        <p>1. Please check spelling of your phrase.</p>\n                                        <p>2. Try to use another artist name or title.</p>\n                                        <button class=\"search__again\">Try again</button>\n                                    </div>");
+}
+
+function searchAgain(input) {
+  var btn = document.querySelector('.search__again');
+  var resultSection = document.querySelector('.result__section');
+  var defaultSongcContainer = document.querySelector('.container');
+  btn.addEventListener('click', function () {
+    input.focus();
+    input.value = '';
+    (0, _searchCore.hideResultContainer)(resultSection);
+    resultSection.addEventListener('transitionend', function () {
+      (0, _searchCore.showDefaultSongs)(defaultSongcContainer);
+    });
+  });
+}
+},{"./searchCore":"js/search/searchCore.js"}],"js/search/addSvg.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.addSvgDivider = addSvgDivider;
+
+function addSvgDivider(resultSection) {
+  if (!document.body.contains(document.querySelector('.span__divider'))) {
+    var parentDiv = document.querySelector('.section--blue');
+    var newSpan = document.createElement('span');
+    newSpan.classList.add('span__divider');
+    newSpan.innerHTML = "<svg id=\"curveUpColor\" xmlns=\"http://www.w3.org/2000/svg\" version=\"1.1\" width=\"100%\" height=\"100\" viewBox=\"0 0 100 100\" preserveAspectRatio=\"none\">\n        <path d=\"M0 100 C 20 0 50 0 100 100 Z\" /></svg>";
+    parentDiv.insertBefore(newSpan, resultSection);
+  } else return;
+}
 },{}],"js/search/searchCore.js":[function(require,module,exports) {
 "use strict";
 
@@ -1380,12 +1425,17 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.listenForSearch = listenForSearch;
+exports.hideResultContainer = exports.showDefaultSongs = void 0;
 
 var _debounce = _interopRequireDefault(require("../helpers/debounce"));
 
 var _getData = require("../getData");
 
 var _listenForPlay = require("../playerActions/listenForPlay");
+
+var _wrongSearch = require("./wrongSearch");
+
+var _addSvg = require("./addSvg");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -1407,7 +1457,9 @@ var getSearchText = function getSearchText(e) {
 
 function displayResultOnPage() {
   if (findedSongs.length === 0) {
-    wrongSearch();
+    (0, _wrongSearch.wrongSearch)(resultSection, searchedText);
+    (0, _addSvg.addSvgDivider)(resultSection);
+    (0, _wrongSearch.searchAgain)(input);
   } else createDocumentFragment(findedSongs);
 }
 
@@ -1452,6 +1504,8 @@ var showDefaultSongs = function showDefaultSongs(container) {
   return container.style.display = 'block';
 };
 
+exports.showDefaultSongs = showDefaultSongs;
+
 var showResultContainer = function showResultContainer(result) {
   return result.style.opacity = "1";
 };
@@ -1460,12 +1514,14 @@ var hideResultContainer = function hideResultContainer(result) {
   return result.style.opacity = "0";
 };
 
+exports.hideResultContainer = hideResultContainer;
+
 function createDocumentFragment(result) {
   var fragment = document.createDocumentFragment();
   var newDiv = document.createElement('div');
   newDiv.classList.add('.resultt');
   var newH = document.createElement('h3');
-  newH.classList.add('section__header');
+  newH.classList.add('result__header');
   newH.innerHTML = "That's list of songs that match to your phrase - <em>\"".concat(searchedText, "\"</em>: ");
   newDiv.appendChild(newH);
   var newOl = document.createElement('ol');
@@ -1482,11 +1538,8 @@ function createDocumentFragment(result) {
   });
   fragment.appendChild(newDiv);
   resultSection.appendChild(fragment);
+  (0, _addSvg.addSvgDivider)(resultSection);
   (0, _listenForPlay.playSong)(_getData.myData, resultSection);
-}
-
-function wrongSearch() {
-  return resultSection.innerHTML = "<h3>The given phrase -  <b>".concat(searchedText, "</b> is not found. </h3>\n    <p>Please:</p>\n    <ul>\n        <li>Check spelling of your phrase. </li>\n        <li>Try to use another artist name or title.</li>\n    </ul>");
 }
 
 function filterSongs(searchedText) {
@@ -1500,7 +1553,7 @@ function listenForSearch() {
 }
 
 var debouncedGetSearchText = (0, _debounce.default)(getSearchText, 450);
-},{"../helpers/debounce":"js/helpers/debounce.js","../getData":"js/getData.js","../playerActions/listenForPlay":"js/playerActions/listenForPlay.js"}],"js/animations/playInfo.js":[function(require,module,exports) {
+},{"../helpers/debounce":"js/helpers/debounce.js","../getData":"js/getData.js","../playerActions/listenForPlay":"js/playerActions/listenForPlay.js","./wrongSearch":"js/search/wrongSearch.js","./addSvg":"js/search/addSvg.js"}],"js/animations/playInfo.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -1594,7 +1647,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "58029" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "49233" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
