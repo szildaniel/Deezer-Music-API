@@ -1038,8 +1038,10 @@ function hamburgerAnimation() {
   var hideMenu = function hideMenu() {
     var main = document.querySelector("main");
     var header = document.querySelector("header");
+    var resultSection = document.querySelector(".section--blue");
     main.addEventListener("click", closeNav);
     header.addEventListener("click", closeNav);
+    resultSection.addEventListener("click", closeNav);
   };
 
   hamburger.addEventListener("click", expand);
@@ -1152,10 +1154,12 @@ Object.defineProperty(exports, "__esModule", {
 exports.initPlayer = initPlayer;
 
 function initPlayer() {
-  var isMobile = false;
+  var device = 'desktop';
 
   if (window.matchMedia("only screen and (max-width: 760px)").matches) {
-    isMobile = true;
+    device = 'mobile';
+  } else if (window.matchMedia("only screen and (min-device-width: 768px) and (max-device-width: 1024px)").matches) {
+    device = 'tablet';
   }
 
   DZ.init({
@@ -1164,11 +1168,11 @@ function initPlayer() {
     player: {
       container: 'player',
       playlist: true,
-      format: isMobile ? 'classic' : 'square',
-      width: isMobile ? window.innerWidth : 200,
-      height: isMobile ? 90 : 200,
+      format: device === 'desktop' ? 'square' : 'classic',
+      width: device === 'desktop' ? 200 : window.innerWidth,
+      height: device === 'desktop' ? 200 : 90,
       autoplay: false,
-      layout: isMobile ? 'light' : 'dark'
+      layout: device === 'desktop' ? 'dark' : 'light'
     }
   });
 }
@@ -1315,24 +1319,72 @@ function hidePlayerInfo() {
 function showPlayerInfo() {
   playerInfo.classList.add('show');
 }
-},{"../getData":"js/getData.js","./initPlayer":"js/playerActions/initPlayer.js","./playerHelpers":"js/playerActions/playerHelpers.js","./addTrackToPlaylist":"js/playerActions/addTrackToPlaylist.js"}],"js/animations/listenForPlayListHover.js":[function(require,module,exports) {
+},{"../getData":"js/getData.js","./initPlayer":"js/playerActions/initPlayer.js","./playerHelpers":"js/playerActions/playerHelpers.js","./addTrackToPlaylist":"js/playerActions/addTrackToPlaylist.js"}],"js/animations/playInfo.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.listenForPlayListHover = listenForPlayListHover;
+exports.showPlayInfo = showPlayInfo;
+
+function showPlayInfo(i) {
+  var parentDontHaveInfo = document.querySelector(".link".concat(i, " .play__info")) === null;
+
+  if (parentDontHaveInfo) {
+    insertInfo(i);
+    var infoSpan = document.querySelector(".info".concat(i));
+    infoSpan.classList.toggle('show');
+  } else {
+    var _infoSpan = document.querySelector(".info".concat(i));
+
+    _infoSpan.classList.toggle('show');
+  }
+}
+
+function insertInfo(i) {
+  var currentSvg = document.querySelector(".svg".concat(i));
+  var parentEl = document.querySelector(".link".concat(i));
+  var newSpan = document.createElement('span');
+  newSpan.classList.add("play__info", "info".concat(i));
+  newSpan.textContent = 'Click Play';
+  parentEl.insertBefore(newSpan, currentSvg);
+}
+},{}],"js/animations/playBtnAnimation.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.toggleHoverStyles = toggleHoverStyles;
+
+function toggleHoverStyles(i) {
+  var currentBtn = document.querySelector(".play".concat(i));
+  var currentSvg = document.querySelector(".svg".concat(i));
+  currentBtn.classList.toggle('hovered');
+  currentSvg.classList.toggle('grayscaled');
+}
+},{}],"js/animations/listenForHover.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.onHoverAddInfos = onHoverAddInfos;
+
+var _playInfo = require("./playInfo");
+
+var _playBtnAnimation = require("./playBtnAnimation");
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
-function listenForPlayListHover() {
-  return _listenForPlayListHover.apply(this, arguments);
+function onHoverAddInfos() {
+  return _onHoverAddInfos.apply(this, arguments);
 }
 
-function _listenForPlayListHover() {
-  _listenForPlayListHover = _asyncToGenerator(
+function _onHoverAddInfos() {
+  _onHoverAddInfos = _asyncToGenerator(
   /*#__PURE__*/
   regeneratorRuntime.mark(function _callee() {
     var container;
@@ -1348,6 +1400,10 @@ function _listenForPlayListHover() {
                 var elIndex = e.target.dataset.index;
                 var el = document.querySelector(".song__playlist__info[data-index=\"".concat(elIndex, "\"]"));
                 toggleInfo(el);
+              } else if (e.target.classList.contains('fa-play')) {
+                var _elIndex = e.target.dataset.index;
+                (0, _playInfo.showPlayInfo)(_elIndex);
+                (0, _playBtnAnimation.toggleHoverStyles)(_elIndex);
               } else return;
             });
             container.addEventListener('mouseout', function (e) {
@@ -1357,6 +1413,10 @@ function _listenForPlayListHover() {
                 var elIndex = e.target.dataset.index;
                 var el = document.querySelector(".song__playlist__info[data-index=\"".concat(elIndex, "\"]"));
                 toggleInfo(el);
+              } else if (e.target.classList.contains('fa-play')) {
+                var _elIndex2 = e.target.dataset.index;
+                (0, _playInfo.showPlayInfo)(_elIndex2);
+                (0, _playBtnAnimation.toggleHoverStyles)(_elIndex2);
               } else return;
             });
 
@@ -1367,13 +1427,13 @@ function _listenForPlayListHover() {
       }
     }, _callee);
   }));
-  return _listenForPlayListHover.apply(this, arguments);
+  return _onHoverAddInfos.apply(this, arguments);
 }
 
 function toggleInfo(element) {
   element.classList.toggle('show');
 }
-},{}],"js/search/wrongSearch.js":[function(require,module,exports) {
+},{"./playInfo":"js/animations/playInfo.js","./playBtnAnimation":"js/animations/playBtnAnimation.js"}],"js/search/wrongSearch.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -1553,28 +1613,7 @@ function listenForSearch() {
 }
 
 var debouncedGetSearchText = (0, _debounce.default)(getSearchText, 450);
-},{"../helpers/debounce":"js/helpers/debounce.js","../getData":"js/getData.js","../playerActions/listenForPlay":"js/playerActions/listenForPlay.js","./wrongSearch":"js/search/wrongSearch.js","./addSvg":"js/search/addSvg.js"}],"js/animations/playInfo.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.insertPlayInfoSpan = insertPlayInfoSpan;
-
-function insertPlayInfoSpan() {
-  var firstSvg = document.querySelector('.svg0');
-  var newSpan = document.createElement('span');
-  newSpan.classList.add('play__info');
-  newSpan.textContent = 'Click Play';
-  var parentEl = document.querySelector('.link0');
-  parentEl.insertBefore(newSpan, firstSvg);
-  var infoSpan = document.querySelector('.play__info');
-  infoSpan.classList.toggle('show');
-  var hideInfo = setTimeout(function () {
-    infoSpan.classList.toggle('show');
-  }, 12000);
-}
-},{}],"js/index.js":[function(require,module,exports) {
+},{"../helpers/debounce":"js/helpers/debounce.js","../getData":"js/getData.js","../playerActions/listenForPlay":"js/playerActions/listenForPlay.js","./wrongSearch":"js/search/wrongSearch.js","./addSvg":"js/search/addSvg.js"}],"js/index.js":[function(require,module,exports) {
 "use strict";
 
 require("../styles/style.scss");
@@ -1597,29 +1636,30 @@ var _setCurrentClassToNavLinks = require("./helpers/setCurrentClassToNavLinks");
 
 var _listenForPlay = require("./playerActions/listenForPlay");
 
-var _listenForPlayListHover = require("./animations/listenForPlayListHover");
+var _listenForHover = require("./animations/listenForHover");
 
 var _searchCore = require("./search/searchCore");
 
-var _playInfo = require("./animations/playInfo");
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-(0, _render.default)();
-(0, _setData.setData)();
-(0, _enjoyBtnAnimations.enjoyBtnHoverAnimation)();
-(0, _nav.toggleNav)();
+function initApp() {
+  (0, _render.default)();
+  (0, _setData.setData)();
+  (0, _enjoyBtnAnimations.enjoyBtnHoverAnimation)();
+  (0, _nav.toggleNav)();
 
-_smoothscrollPolyfill.default.polyfill();
+  _smoothscrollPolyfill.default.polyfill();
 
-(0, _hamburgerAnimation.hamburgerAnimation)();
-(0, _setResponsiveNavHeight.setResponsiveNavHeight)();
-(0, _setCurrentClassToNavLinks.setCurrentClassToNavLinks)();
-(0, _listenForPlay.listenForPlay)();
-(0, _listenForPlayListHover.listenForPlayListHover)();
-(0, _searchCore.listenForSearch)();
-(0, _playInfo.insertPlayInfoSpan)();
-},{"../styles/style.scss":"styles/style.scss","./render/render":"js/render/render.js","./setData":"js/setData.js","./helpers/nav":"js/helpers/nav.js","smoothscroll-polyfill":"../node_modules/smoothscroll-polyfill/dist/smoothscroll.js","./animations/hamburgerAnimation":"js/animations/hamburgerAnimation.js","./animations/enjoyBtnAnimations":"js/animations/enjoyBtnAnimations.js","./helpers/setResponsiveNavHeight":"js/helpers/setResponsiveNavHeight.js","./helpers/setCurrentClassToNavLinks":"js/helpers/setCurrentClassToNavLinks.js","./playerActions/listenForPlay":"js/playerActions/listenForPlay.js","./animations/listenForPlayListHover":"js/animations/listenForPlayListHover.js","./search/searchCore":"js/search/searchCore.js","./animations/playInfo":"js/animations/playInfo.js"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+  (0, _hamburgerAnimation.hamburgerAnimation)();
+  (0, _setResponsiveNavHeight.setResponsiveNavHeight)();
+  (0, _setCurrentClassToNavLinks.setCurrentClassToNavLinks)();
+  (0, _listenForPlay.listenForPlay)();
+  (0, _listenForHover.onHoverAddInfos)();
+  (0, _searchCore.listenForSearch)();
+}
+
+initApp();
+},{"../styles/style.scss":"styles/style.scss","./render/render":"js/render/render.js","./setData":"js/setData.js","./helpers/nav":"js/helpers/nav.js","smoothscroll-polyfill":"../node_modules/smoothscroll-polyfill/dist/smoothscroll.js","./animations/hamburgerAnimation":"js/animations/hamburgerAnimation.js","./animations/enjoyBtnAnimations":"js/animations/enjoyBtnAnimations.js","./helpers/setResponsiveNavHeight":"js/helpers/setResponsiveNavHeight.js","./helpers/setCurrentClassToNavLinks":"js/helpers/setCurrentClassToNavLinks.js","./playerActions/listenForPlay":"js/playerActions/listenForPlay.js","./animations/listenForHover":"js/animations/listenForHover.js","./search/searchCore":"js/search/searchCore.js"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -1647,7 +1687,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "49233" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "49240" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

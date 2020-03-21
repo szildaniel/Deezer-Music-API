@@ -1,7 +1,11 @@
 export function initPlayer() {
-  let isMobile = false;
+  let device = 'desktop';
+  
   if(window.matchMedia("only screen and (max-width: 760px)").matches){
-    isMobile = true;
+    device = 'mobile';
+  }
+  else if(window.matchMedia("only screen and (min-device-width: 768px) and (max-device-width: 1024px)").matches){
+    device = 'tablet'
   }
     DZ.init({
       appId: "384884",
@@ -9,11 +13,11 @@ export function initPlayer() {
       player : {
         container : 'player',
         playlist : true,
-        format: isMobile ? 'classic': 'square',
-        width:  isMobile ? window.innerWidth : 200,
-        height: isMobile ? 90 : 200,
+        format: device === 'desktop' ? 'square' : 'classic',
+        width:  device === 'desktop' ?  200 : window.innerWidth,
+        height: device === 'desktop' ?  200 : 90 ,
         autoplay: false,
-        layout: isMobile ? 'light' : 'dark',
+        layout: device === 'desktop' ? 'dark' : 'light',
         }
     });
   }

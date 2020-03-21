@@ -23,9 +23,12 @@ export function hamburgerAnimation() {
   const hideMenu = () => {
     const main = document.querySelector("main");
     const header = document.querySelector("header");
+    const resultSection = document.querySelector(".section--blue");
 
     main.addEventListener("click", closeNav);
     header.addEventListener("click", closeNav);
+    resultSection.addEventListener("click", closeNav);
+  
   }
   
   hamburger.addEventListener("click", expand);

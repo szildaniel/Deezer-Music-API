@@ -427,5 +427,27 @@
   }
   .song__container{
     width: 75vw;
+    .song__title{
+      font-size: 1.2rem;
+    }
+  }
+  .song__playlist{
+    top: 10px;
+  }
+  .my__player{
+    left: 50%;
+    top: 0;
+    transform: translateX(-50%);
+  }
+  .player__info{
+    width: 100vw;
+  }
+  nav{
+    a{
+      padding: 15px !important;
+    }
+    li{
+      padding: 7px;
+    }
   }
 }

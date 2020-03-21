@@ -9,19 +9,23 @@ import { enjoyBtnHoverAnimation } from "./animations/enjoyBtnAnimations";
 import { setResponsiveNavHeight } from "./helpers/setResponsiveNavHeight";
 import { setCurrentClassToNavLinks } from "./helpers/setCurrentClassToNavLinks";
 import { listenForPlay } from "./playerActions/listenForPlay"
-import { listenForPlayListHover } from "./animations/listenForPlayListHover";
+import { onHoverAddInfos } from "./animations/listenForHover";
 import { listenForSearch } from "./search/searchCore";
-import { insertPlayInfoSpan } from "./animations/playInfo";
 
-renderRepeatableHtml();
-setData();
-enjoyBtnHoverAnimation();
-toggleNav();
-smoothscroll.polyfill();
-hamburgerAnimation();
-setResponsiveNavHeight();
-setCurrentClassToNavLinks();
-listenForPlay();
-listenForPlayListHover();
-listenForSearch();
-insertPlayInfoSpan();
+function initApp(){
+    renderRepeatableHtml();
+    setData();
+    enjoyBtnHoverAnimation();
+    toggleNav();
+    smoothscroll.polyfill();
+    hamburgerAnimation();
+    setResponsiveNavHeight();
+    setCurrentClassToNavLinks();
+    listenForPlay();
+    onHoverAddInfos();
+    listenForSearch();
+}
+
+initApp();
+
+
