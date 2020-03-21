@@ -32,6 +32,15 @@ header {
   padding: 4rem;
   text-align: center;
 }
+header .header__logo {
+  width: 160px;
+  position: relative;
+  bottom: 50px;
+}
+header .logo__container {
+  display: flex;
+  justify-content: center;
+}
 
 ol {
   list-style: none;
@@ -606,6 +615,14 @@ footer .github__link {
     padding: 1rem;
     height: 85vh;
   }
+  header .logo__container {
+    justify-content: flex-start;
+  }
+  header .header__logo {
+    width: 87px;
+    position: relative;
+    bottom: 28px;
+  }
 
   .enjoy {
     position: absolute;
@@ -1020,6 +1037,10 @@ iframe {
   }
 }
 @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+  header .header__logo {
+    bottom: 60px;
+  }
+
   .nav {
     right: -600px;
     width: 350px;

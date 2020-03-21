@@ -26,6 +26,14 @@
     grid-column: none;
     padding: 1rem;
     height: 85vh;
+    .logo__container{
+      justify-content: flex-start;
+    }
+    .header__logo{
+      width: 87px;
+      position: relative;
+      bottom: 28px;
+      }
   }
   .enjoy {
     position: absolute;
@@ -184,6 +192,7 @@
       text-align: center;
       text-shadow: 0 0 5px white;
     }
+    
   }
 }
 // smarthphones, ipads and tablets
@@ -405,6 +414,9 @@
 }
 // only iPads, tablets
 @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+  header .header__logo{
+    bottom: 60px;
+  }
   .nav {
     right: -600px;
     width: 350px;

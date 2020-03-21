@@ -27,6 +27,15 @@ header {
   color: white;
   padding: 4rem;
   text-align: center;
+  .header__logo{
+    width: 160px;
+    position: relative;
+    bottom: 50px;
+  }
+  .logo__container{
+    display: flex;
+    justify-content: center;
+  }
 }
 ol {
   list-style: none;
