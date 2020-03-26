@@ -1393,34 +1393,13 @@ function _onHoverAddInfos() {
         switch (_context.prev = _context.next) {
           case 0:
             container = document.querySelector('.container');
-            container.addEventListener('mouseover', function (e) {
-              e.preventDefault();
+            container.addEventListener('mouseover', toggleInfo);
+            container.addEventListener('touchstart', toggleInfo);
+            container.addEventListener('mouseout', toggleInfo);
+            container.addEventListener('touchmove', toggleInfo);
+            container.addEventListener('click', toggleInfo);
 
-              if (e.target.classList.contains('song__playlist')) {
-                var elIndex = e.target.dataset.index;
-                var el = document.querySelector(".song__playlist__info[data-index=\"".concat(elIndex, "\"]"));
-                toggleInfo(el);
-              } else if (e.target.classList.contains('fa-play')) {
-                var _elIndex = e.target.dataset.index;
-                (0, _playInfo.showPlayInfo)(_elIndex);
-                (0, _playBtnAnimation.toggleHoverStyles)(_elIndex);
-              } else return;
-            });
-            container.addEventListener('mouseout', function (e) {
-              e.preventDefault();
-
-              if (e.target.classList.contains('song__playlist')) {
-                var elIndex = e.target.dataset.index;
-                var el = document.querySelector(".song__playlist__info[data-index=\"".concat(elIndex, "\"]"));
-                toggleInfo(el);
-              } else if (e.target.classList.contains('fa-play')) {
-                var _elIndex2 = e.target.dataset.index;
-                (0, _playInfo.showPlayInfo)(_elIndex2);
-                (0, _playBtnAnimation.toggleHoverStyles)(_elIndex2);
-              } else return;
-            });
-
-          case 3:
+          case 6:
           case "end":
             return _context.stop();
         }
@@ -1430,8 +1409,16 @@ function _onHoverAddInfos() {
   return _onHoverAddInfos.apply(this, arguments);
 }
 
-function toggleInfo(element) {
-  element.classList.toggle('show');
+function toggleInfo(e) {
+  if (e.target.classList.contains('song__playlist')) {
+    var elIndex = e.target.dataset.index;
+    var el = document.querySelector(".song__playlist__info[data-index=\"".concat(elIndex, "\"]"));
+    el.classList.toggle('show');
+  } else if (e.target.classList.contains('fa-play')) {
+    var _elIndex = e.target.dataset.index;
+    (0, _playInfo.showPlayInfo)(_elIndex);
+    (0, _playBtnAnimation.toggleHoverStyles)(_elIndex);
+  } else return;
 }
 },{"./playInfo":"js/animations/playInfo.js","./playBtnAnimation":"js/animations/playBtnAnimation.js"}],"js/search/wrongSearch.js":[function(require,module,exports) {
 "use strict";
@@ -1687,7 +1674,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "49490" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "56691" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

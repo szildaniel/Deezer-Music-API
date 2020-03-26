@@ -4,40 +4,27 @@ import { toggleHoverStyles } from "./playBtnAnimation";
 export async function onHoverAddInfos(){
     const container = document.querySelector('.container');
 
-    container.addEventListener('mouseover', (e) => {
-        e.preventDefault();
+    container.addEventListener('mouseover', toggleInfo);
+    container.addEventListener('touchstart', toggleInfo);
 
-        if(e.target.classList.contains('song__playlist')){
-            const elIndex = e.target.dataset.index;
-            const el = document.querySelector(`.song__playlist__info[data-index="${elIndex}"]`)
-            toggleInfo(el);
-        }
-        else if(e.target.classList.contains('fa-play')){
-            const elIndex = e.target.dataset.index;
-            showPlayInfo(elIndex);
-            toggleHoverStyles(elIndex);
+    container.addEventListener('mouseout', toggleInfo);
+    container.addEventListener('touchmove', toggleInfo);
+    container.addEventListener('click', toggleInfo);
+} 
 
-        }
-        else return;
-    });
 
-    container.addEventListener('mouseout', (e) => {
-        e.preventDefault();
-        if(e.target.classList.contains('song__playlist')){
-            const elIndex = e.target.dataset.index;
-            const el = document.querySelector(`.song__playlist__info[data-index="${elIndex}"]`);
-            toggleInfo(el);
-        }
-        else if(e.target.classList.contains('fa-play')){
-            const elIndex = e.target.dataset.index;
-            showPlayInfo(elIndex);
-            toggleHoverStyles(elIndex);
 
-        }
-        else return;
-    });
-}
+function toggleInfo(e){
+    if(e.target.classList.contains('song__playlist')){
+        const elIndex = e.target.dataset.index;
+        const el = document.querySelector(`.song__playlist__info[data-index="${elIndex}"]`);
+        el.classList.toggle('show');
+    }
+    else if(e.target.classList.contains('fa-play')){
+        const elIndex = e.target.dataset.index;
+        showPlayInfo(elIndex);
+        toggleHoverStyles(elIndex);
 
-function toggleInfo(element){
-    element.classList.toggle('show');
+    }
+    else return;
 }
