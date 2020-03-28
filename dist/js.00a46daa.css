@@ -697,9 +697,6 @@ footer .github__link {
     font-size: 1.3rem;
     padding: 0.4rem 1rem;
   }
-  nav ul li a.current {
-    padding: 0.4rem 1rem;
-  }
 
   .song__title, .result__section .song__title {
     padding: 1.3rem 0.5rem;
