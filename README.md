@@ -1,5 +1,7 @@
 # Deezer-Music-API
  **[Live Version](https://szildaniel.github.io/Deezer-Music-API)**
+ 
+Project is made only for learning purpose. I realize that is not working perfectly, but a lot of work have been done so I decided to not removing it.
 
 Prepare yourself for a little **back in time trip** and remind _best songs_ from years _1990 to 2000._ 
 Browse search and listen.
